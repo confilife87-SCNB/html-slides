@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 도구 활용 교육복지 수업</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    :root {
+      --main-color: #4A90D9;
+      --accent-color: #F5A623;
+      --green-color: #27AE60;
+      --light-bg: #F8F9FA;
+      --text-dark: #2C3E50;
+    }
+
+    .reveal {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    }
+
+    /* 표지 슬라이드 */
+    .cover-slide {
+      background: linear-gradient(135deg, #4A90D9 0%, #1a5fa8 100%);
+      color: white !important;
+    }
+    .cover-slide h1 {
+      font-size: 2em;
+      font-weight: 800;
+      color: white !important;
+      margin-bottom: 0.3em;
+    }
+    .cover-slide p {
+      color: rgba(255,255,255,0.9) !important;
+      font-size: 1em;
+    }
+    .cover-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 24px;
+      font-size: 0.8em;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    /* 차시 구분 슬라이드 */
+    .chapter-slide {
+      background: linear-gradient(135deg, #27AE60 0%, #1a7a42 100%);
+      color: white !important;
+    }
+    .chapter-slide h2 {
+      color: white !important;
+      font-size: 1.8em;
+      font-weight: 800;
+    }
+    .chapter-slide p {
+      color: rgba(255,255,255,0.9) !important;
+    }
+
+    /* 일반 슬라이드 */
+    .reveal h2 {
+      color: var(--main-color);
+      font-size: 1.3em;
+      font-weight: 700;
+      border-bottom: 3px solid var(--main-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .reveal h3 {
+      color: var(--text-dark);
+      font-size: 1.1em;
+      font-weight: 700;
+    }
+
+    /* 툴 소개 카드 */
+    .tool-card {
+      background: var(--light-bg);
+      border-left: 5px solid var(--main-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 10px 0;
+      text-align: left;
+    }
+    .tool-card.green { border-left-color: var(--green-color); }
+    .tool-card.orange { border-left-color: var(--accent-color); }
+
+    /* 스텝 박스 */
+    .step-box {
+      display: flex;
+      align-items: flex-start;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 8px 0;
+      text-align: left;
+    }
+    .step-number {
+      background: var(--main-color);
+      color: white;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      max-width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-right: 14px;
+      flex-shrink: 0;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+    .step-number.green { background: var(--green-color); }
+    .step-number.orange { background: var(--accent-color); }
+    .step-number.green { background: var(--green-color); }
+    .step-number.orange { background: var(--accent-color); }
+    .step-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .step-content strong {
+      font-size: 0.88em;
+      color: var(--text-dark);
+      line-height: 1.3;
+      word-break: keep-all;
+      word-wrap: break-word;
+    }
+    .step-content span {
+      font-size: 0.74em;
+      color: #888;
+      line-height: 1.35;
+      display: block;
+      word-break: keep-all;
+      word-wrap: break-word;
+    }
+
+    /* URL 박스 */
+    .url-box {
+      background: #EBF5FB;
+      border: 2px dashed var(--main-color);
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 0.85em;
+      color: var(--main-color);
+      font-weight: 700;
+      margin: 12px 0;
+      text-align: center;
+    }
+
+    /* 흐름 박스 */
+    .flow-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .flow-item {
+      background: var(--main-color);
+      color: white;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.78em;
+      font-weight: 600;
+      text-align: center;
+    }
+    .flow-item.green { background: var(--green-color); }
+    .flow-item.orange { background: var(--accent-color); }
+    .flow-arrow {
+      font-size: 1.2em;
+      color: #aaa;
+    }
+
+    /* 강조 박스 */
+    .highlight-box {
+      background: #FEF9E7;
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 0.82em;
+      color: var(--text-dark);
+      margin: 10px 0;
+      text-align: left;
+    }
+    .highlight-box.blue {
+      background: #EBF5FB;
+      border-color: var(--main-color);
+    }
+    .highlight-box.green {
+      background: #EAFAF1;
+      border-color: var(--green-color);
+    }
+
+    /* 2단 레이아웃 */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 10px 0;
+    }
+
+    /* 이모지 아이콘 타이틀 */
+    .emoji-title {
+      font-size: 2em;
+      margin-bottom: 8px;
+    }
+
+    /* 정리 카드 */
+    .summary-card {
+      background: white;
+      border-radius: 10px;
+      border: 2px solid #e0e0e0;
+      padding: 14px;
+      text-align: center;
+      font-size: 0.8em;
+    }
+    .summary-card .tool-name {
+      font-weight: 700;
+      color: var(--main-color);
+      font-size: 1em;
+      margin-bottom: 4px;
+    }
+    .summary-card.green .tool-name { color: var(--green-color); }
+    .summary-card.orange .tool-name { color: var(--accent-color); }
+
+    /* 소감 나누기 */
+    .question-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      padding: 20px;
+      color: white;
+      font-size: 0.9em;
+      margin: 10px 0;
+    }
+
+    /* 엔딩 */
+    .ending-slide {
+      background: linear-gradient(135deg, #F5A623 0%, #e08000 100%);
+      color: white !important;
+    }
+    .ending-slide h2 {
+      color: white !important;
+      border-bottom-color: rgba(255,255,255,0.4);
+      font-size: 1.8em;
+    }
+
+    .reveal .slides section {
+      height: 100%;
+      box-sizing: border-box;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .reveal .slides section > * {
+      width: 100%;
+    }
+
+    p, li, span, td, strong {
+      font-size: 0.78em;
+      line-height: 1.4;
+      color: var(--text-dark);
+      word-break: keep-all;
+      word-wrap: break-word;
+    }
+
+    .step-box {
+      padding: 10px 14px;
+      margin: 5px 0;
+    }
+
+    .highlight-box {
+      padding: 8px 14px;
+      margin: 6px 0;
+    }
+
+    .reveal h2 {
+      font-size: 1.15em;
+      padding-bottom: 7px;
+      margin-bottom: 12px;
+    }
+        /* ── 애니메이션 키프레임 ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.04); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    /* ── step-box 순차 등장 ── */
+    .step-box {
+      animation: fadeInUp 0.5s ease both;
+    }
+    .step-box:nth-child(1) { animation-delay: 0.1s; }
+    .step-box:nth-child(2) { animation-delay: 0.3s; }
+    .step-box:nth-child(3) { animation-delay: 0.5s; }
+    .step-box:nth-child(4) { animation-delay: 0.7s; }
+
+    /* ── step-box 호버 ── */
+    .step-box:hover {
+      border-color: var(--main-color);
+      background: #f0f7ff;
+      transform: translateX(6px);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(74,144,217,0.15);
+    }
+
+    /* ── tool-card 호버 ── */
+    .tool-card {
+      transition: all 0.25s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    /* ── flow-item 호버 + 펄스 ── */
+    .flow-item {
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+    .flow-item:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      animation: pulse 1s ease infinite;
+    }
+
+    /* ── summary-card 호버 ── */
+    .summary-card {
+      transition: all 0.25s ease;
+    }
+    .summary-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      border-color: var(--main-color);
+    }
+
+    /* ── url-box 호버 (링크 클릭 유도) ── */
+    .url-box {
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .url-box:hover {
+      background: #d6eaf8;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(74,144,217,0.2);
+    }
+
+    /* ── highlight-box 등장 애니메이션 ── */
+    .highlight-box {
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    /* ── question-box 펄스 ── */
+    .question-box {
+      animation: fadeInUp 0.6s ease 0.3s both;
+      transition: transform 0.25s ease;
+    }
+    .question-box:hover {
+      transform: scale(1.02);
+    }
+
+    /* ── cover-slide h1 shimmer 효과 ── */
+    .cover-slide h1 {
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffe9a0 40%,
+        #ffffff 60%,
+        #ffffff 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ── step-number 호버 회전 ── */
+    .step-number {
+      transition: transform 0.3s ease;
+    }
+    .step-box:hover .step-number {
+      transform: rotate(10deg) scale(1.15);
+    }
+        /* ── 슬라이드 오버플로우 방지 ── */
+    .reveal .slides section {
+      overflow: hidden !important;
+      padding: 16px 36px !important;
+    }
+
+    /* ── step-box 전체 압축 ── */
+    .step-box {
+      padding: 8px 12px !important;
+      margin: 4px 0 !important;
+    }
+
+    .step-content strong {
+      font-size: 0.88em;
+      margin-bottom: 2px;
+    }
+
+    .step-content span {
+      font-size: 0.74em;
+      line-height: 1.35;
+    }
+
+    /* ── highlight-box 압축 ── */
+    .highlight-box {
+      padding: 7px 12px !important;
+      margin: 4px 0 !important;
+      font-size: 0.76em;
+    }
+
+    /* ── question-box 압축 ── */
+    .question-box {
+      padding: 12px 16px !important;
+      margin: 6px 0 !important;
+      font-size: 0.78em;
+    }
+
+    /* ── tool-card 압축 ── */
+    .tool-card {
+      padding: 10px 14px !important;
+      margin: 6px 0 !important;
+    }
+
+    /* ── url-box 압축 ── */
+    .url-box {
+      padding: 8px 14px !important;
+      margin: 6px 0 !important;
+      font-size: 0.8em;
+    }
+
+    /* ── two-col 간격 압축 ── */
+    .two-col {
+      gap: 8px !important;
+      margin: 6px 0 !important;
+    }
+
+    /* ── summary-card 압축 ── */
+    .summary-card {
+      padding: 10px !important;
+    }
+
+    .emoji-title {
+      font-size: 1.5em !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* ── h2 간격 압축 ── */
+    .reveal h2 {
+      font-size: 1.1em !important;
+      margin-bottom: 10px !important;
+      padding-bottom: 6px !important;
+    }
+
+    /* ── flow-wrap 압축 ── */
+    .flow-wrap {
+      margin: 8px 0 !important;
+      gap: 6px !important;
+    }
+
+    .flow-item {
+      padding: 8px 12px !important;
+      font-size: 0.74em !important;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ===================== -->
+    <!--       1차시 시작       -->
+    <!-- ===================== -->
+
+    <!-- 슬라이드 1: 1차시 표지 -->
+    <section class="cover-slide">
+      <div class="cover-badge">📚 1차시</div>
+      <h1>AI 도구로<br>즐기는 수업</h1>
+      <p>교육복지 AI 활용 수업<br>Quick Draw · AutoDraw · Suno AI</p>
+    </section>
+
+    <!-- 슬라이드 2: 오늘 배울 것 -->
+    <section>
+      <h2>📋 오늘 배울 것</h2>
+      <div class="flow-wrap">
+        <div class="flow-item">🎮 Quick, Draw!<br><small>AI 그림 맞추기</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item orange">🎨 AutoDraw<br><small>AI 그림 도우미</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item green">🎵 Suno AI<br><small>AI 노래 만들기</small></div>
+      </div>
+      <div class="highlight-box blue" style="margin-top:20px;">
+        💡 <strong>오늘 수업 방식</strong><br>
+        각 도구를 소개 → 직접 접속 → 단계별로 따라하기
+      </div>
+    </section>
+
+    <!-- 슬라이드 3: AI가 뭐예요? -->
+    <section>
+      <h2>🤖 AI가 뭐예요?</h2>
+      <div class="tool-card">
+        <strong>AI (인공지능)</strong>란?<br>
+        <span>컴퓨터가 사람처럼 생각하고 배우는 기술이에요.<br>
+        우리가 많이 쓸수록, AI도 점점 더 똑똑해집니다.</span>
+      </div>
+      <div class="two-col" style="margin-top:14px;">
+        <div class="highlight-box blue">
+          🎮 <strong>게임에서</strong><br>
+          <span>AI가 나와 대결하는 상대방 캐릭터</span>
+        </div>
+        <div class="highlight-box green">
+          📱 <strong>생활에서</strong><br>
+          <span>유튜브가 영상을 추천해주는 것</span>
+        </div>
+        <div class="highlight-box">
+          🎵 <strong>음악에서</strong><br>
+          <span>멜론이 노래를 추천해주는 것</span>
+        </div>
+        <div class="highlight-box blue">
+          🖼️ <strong>그림에서</strong><br>
+          <span>내가 그린 그림을 AI가 알아보는 것</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 4: Quick Draw 소개 -->
+    <section>
+      <h2>🎮 Quick, Draw! 소개</h2>
+      <div class="tool-card">
+        <strong>Quick, Draw!</strong>
+        <span>구글이 만든 AI 그림 맞추기 게임이에요.<br>
+        내가 그림을 그리면, AI가 20초 안에 무엇을 그린 건지 맞춰요!</span>
+      </div>
+      <div class="url-box">
+        <a href="https://quickdraw.withgoogle.com" target="_blank"
+           style="color:var(--main-color); text-decoration:none; font-weight:700;">
+          🌐 quickdraw.withgoogle.com
+        </a>
+      </div>
+      <div class="two-col">
+        <div class="highlight-box blue">
+          ✅ <strong>무료</strong><br>
+          <span>회원가입 없이 바로 사용</span>
+        </div>
+        <div class="highlight-box green">
+          ✅ <strong>쉬움</strong><br>
+          <span>그리기만 하면 돼요</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 5: Quick Draw STEP 1 -->
+    <section>
+      <h2>🎮 Quick, Draw! — STEP 1</h2>
+      <div class="step-box">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>사이트 접속하기</strong>
+          <span>브라우저 주소창에 <b>quickdraw.withgoogle.com</b> 입력 후 Enter</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>시작 버튼 클릭</strong>
+          <span>화면 중앙의 <b>"시작하자!"</b> 버튼을 클릭하세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <strong>제시어 확인</strong>
+          <span>화면 위쪽에 그려야 할 단어가 나타나요. 확인하세요!</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:10px;">
+        ⏱️ 제시어가 나오면 <strong>20초</strong> 안에 그려야 해요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 6: Quick Draw STEP 2 -->
+    <section>
+      <h2>🎮 Quick, Draw! — STEP 2</h2>
+      <div class="step-box">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>마우스(또는 손가락)로 그리기</strong>
+          <span>검은 화면 위에 제시어를 자유롭게 그려보세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>AI가 실시간으로 맞추는 중!</strong>
+          <span>그리는 동안 AI가 "혹시 ○○○인가요?" 라고 말해요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <strong>6개 제시어 모두 그리기</strong>
+          <span>총 6개의 제시어를 그리면 게임이 끝나요</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        💡 잘 못 그려도 괜찮아요! AI가 얼마나 맞추는지 확인해 봐요
+      </div>
+    </section>
+
+    <!-- 슬라이드 7: Quick Draw STEP 3 -->
+    <section>
+      <h2>🎮 Quick, Draw! — STEP 3</h2>
+      <div class="step-box">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>결과 확인하기</strong>
+          <span>AI가 맞춘 그림과 못 맞춘 그림을 확인해요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>다른 친구들의 그림 보기</strong>
+          <span>전 세계 사람들이 같은 제시어를 어떻게 그렸는지 볼 수 있어요</span>
+        </div>
+      </div>
+      <div class="question-box">
+        💬 <strong>이야기 나눠봐요!</strong><br><br>
+        "AI가 내 그림을 맞췄나요? 어떤 그림을 잘 맞췄나요?"<br>
+        "왜 AI는 그림을 알아볼 수 있을까요?"
+      </div>
+    </section>
+
+    <!-- 슬라이드 8: AutoDraw 소개 -->
+    <section>
+      <h2>🎨 AutoDraw 소개</h2>
+      <div class="tool-card orange">
+        <strong>AutoDraw</strong>
+        <span>구글이 만든 AI 그림 도우미예요.<br>
+        내가 대충 그린 그림을 AI가 예쁜 그림으로 바꿔줘요!</span>
+      </div>
+      <div class="url-box">
+        <a href="https://autodraw.com" target="_blank"
+           style="color:var(--main-color); text-decoration:none; font-weight:700;">
+          🌐 autodraw.com
+        </a>
+      </div>
+      <div class="two-col">
+        <div class="highlight-box blue">
+          ✅ <strong>무료</strong><br>
+          <span>회원가입 없이 바로 사용</span>
+        </div>
+        <div class="highlight-box">
+          🎯 <strong>활용</strong><br>
+          <span>카드, 포스터 만들 때 유용해요</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 9: AutoDraw STEP 1 -->
+    <section>
+      <h2>🎨 AutoDraw — STEP 1</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>사이트 접속하기</strong>
+          <span>브라우저 주소창에 <b>autodraw.com</b> 입력 후 Enter</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>"Start Drawing" 클릭</strong>
+          <span>중앙의 버튼을 클릭하면 흰 캔버스가 나타나요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">3</div>
+        <div class="step-content">
+          <strong>왼쪽 도구 확인</strong>
+          <span>연필, 지우개, 색상 도구 등이 왼쪽에 있어요</span>
+        </div>
+      </div>
+      <div class="highlight-box">
+        💡 상단에 <b>AutoDraw</b> 도구(✨ 연필 모양)가 선택되어 있는지 확인하세요
+      </div>
+    </section>
+
+    <!-- 슬라이드 10: AutoDraw STEP 2 -->
+    <section>
+      <h2>🎨 AutoDraw — STEP 2</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>그리고 싶은 것 자유롭게 그리기</strong>
+          <span>고양이, 집, 나무, 자동차 등 무엇이든 그려보세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>상단에 AI 추천 그림 확인</strong>
+          <span>그리는 동안 화면 상단에 AI가 추천하는 예쁜 그림들이 나타나요</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        🖌️ 잘 못 그려도 돼요! 오히려 대충 그릴수록 AI 추천이 재미있어요 😄
+      </div>
+    </section>
+
+    <!-- 슬라이드 11: AutoDraw STEP 3 -->
+    <section>
+      <h2>🎨 AutoDraw — STEP 3</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>AI 추천 그림 클릭하기</strong>
+          <span>상단 추천 그림 중 마음에 드는 것을 클릭하면 내 그림이 바뀌어요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>색상 입히기</strong>
+          <span>왼쪽 색상 도구로 그림에 색을 칠해보세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">3</div>
+        <div class="step-content">
+          <strong>다운로드 저장</strong>
+          <span>우측 상단 메뉴 → Download 클릭하면 이미지로 저장돼요</span>
+        </div>
+      </div>
+      <div class="highlight-box">
+        💾 저장한 그림은 미리캔버스(2차시)에서 활용할 수 있어요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 12: Suno AI 소개 -->
+    <section>
+      <h2>🎵 Suno AI 소개</h2>
+      <div class="tool-card green">
+        <strong>Suno AI</strong>
+        <span>키워드 몇 개만 입력하면 AI가 노래를 만들어줘요.<br>
+        작곡 실력이 없어도 나만의 노래를 가질 수 있어요!</span>
+      </div>
+      <div class="url-box">
+        <a href="https://suno.com" target="_blank"
+           style="color:var(--main-color); text-decoration:none; font-weight:700;">
+          🌐 suno.com
+        </a>
+      </div>
+      <div class="two-col">
+        <div class="highlight-box green">
+          ✅ <strong>무료 플랜</strong><br>
+          <span>하루 10곡까지 무료 생성 가능</span>
+        </div>
+        <div class="highlight-box blue">
+          🎯 <strong>활용</strong><br>
+          <span>수업 주제 노래, 자기소개 노래 등</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:6px;">
+        ⚠️ <strong>주의</strong> : 구글 또는 마이크로소프트 계정으로 로그인이 필요해요
+      </div>
+    </section>
+
+    <!-- 슬라이드 13: Suno AI STEP 1 -->
+    <section>
+      <h2>🎵 Suno AI — STEP 1</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>사이트 접속하기</strong>
+          <span>브라우저 주소창에 <b>suno.com</b> 입력 후 Enter</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>로그인하기</strong>
+          <span>우측 상단 "Sign In" → 구글 계정으로 로그인</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">3</div>
+        <div class="step-content">
+          <strong>Create 버튼 찾기</strong>
+          <span>왼쪽 메뉴에서 <b>"Create"</b> 버튼을 클릭하세요</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        💡 학교 구글 계정이 있다면 바로 사용 가능해요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 14: Suno AI STEP 2 -->
+    <section>
+      <h2>🎵 Suno AI — STEP 2</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>Song Description 입력</strong>
+          <span>어떤 노래를 만들지 설명을 입력해요<br>
+          예) <em>"신나는 봄날 소풍, 밝고 경쾌한 분위기, 한국어"</em></span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>스타일 선택 (선택사항)</strong>
+          <span>팝, 발라드, 힙합 등 원하는 음악 스타일을 입력할 수 있어요</span>
+        </div>
+      </div>
+      <div class="highlight-box">
+        📝 <strong>추천 입력 예시</strong><br>
+        "친구들과 함께하는 즐거운 하루, 밝고 신나는 느낌, 한국어 가사"
+      </div>
+    </section>
+
+    <!-- 슬라이드 15: Suno AI STEP 3 -->
+    <section>
+      <h2>🎵 Suno AI — STEP 3</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>Create 버튼 클릭</strong>
+          <span>입력 완료 후 "Create" 버튼을 눌러요. 1~2분 기다리면 노래가 완성돼요!</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>완성된 노래 듣기</strong>
+          <span>재생 버튼(▶)을 눌러서 AI가 만든 노래를 들어보세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">3</div>
+        <div class="step-content">
+          <strong>공유하기</strong>
+          <span>마음에 들면 링크 복사로 친구들과 공유할 수 있어요</span>
+        </div>
+      </div>
+      <div class="question-box">
+        💬 <strong>이야기 나눠봐요!</strong><br><br>
+        "어떤 노래가 만들어졌나요? 기대했던 것과 같았나요?"
+      </div>
+    </section>
+
+    <!-- 슬라이드 16: 1차시 마무리 -->
+    <section>
+      <h2>🎉 1차시 마무리</h2>
+      <p style="text-align:center; margin-bottom:14px;">오늘 배운 AI 도구를 정리해봐요!</p>
+      <div class="two-col">
+        <div class="summary-card">
+          <div class="emoji-title">🎮</div>
+          <div class="tool-name">Quick, Draw!</div>
+          <span>AI가 내 그림을 맞추는 게임</span>
+        </div>
+        <div class="summary-card orange">
+          <div class="emoji-title">🎨</div>
+          <div class="tool-name" style="color:var(--accent-color)">AutoDraw</div>
+          <span>AI가 내 그림을 예쁘게 바꿔줌</span>
+        </div>
+      </div>
+      <div class="summary-card green" style="margin-top:10px;">
+        <div class="emoji-title">🎵</div>
+        <div class="tool-name" style="color:var(--green-color)">Suno AI</div>
+        <span>키워드만 입력하면 AI가 노래를 만들어줌</span>
+      </div>
+      <div class="highlight-box blue" style="margin-top:12px;">
+        📅 <strong>다음 시간 예고</strong><br>
+        미리캔버스로 내 소개 카드 만들기 + NotebookLM 체험!
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!--       2차시 시작       -->
+    <!-- ===================== -->
+
+    <!-- 슬라이드 17: 2차시 표지 -->
+    <section class="cover-slide" style="background: linear-gradient(135deg, #27AE60 0%, #1a7a42 100%);">
+      <div class="cover-badge">📚 2차시</div>
+      <h1>AI 도구로<br>직접 만들어보기</h1>
+      <p>교육복지 AI 활용 수업<br>미리캔버스 · NotebookLM</p>
+    </section>
+
+    <!-- 슬라이드 18: 지난 시간 복습 -->
+    <section>
+      <h2>🔁 지난 시간 기억해요?</h2>
+      <div class="two-col">
+        <div class="summary-card">
+          <div class="emoji-title">🎮</div>
+          <div class="tool-name">Quick, Draw!</div>
+          <span>AI가 내 그림을 맞추는 게임</span>
+        </div>
+        <div class="summary-card orange">
+          <div class="emoji-title">🎨</div>
+          <div class="tool-name" style="color:var(--accent-color)">AutoDraw</div>
+          <span>AI가 내 그림을 예쁘게 바꿔줌</span>
+        </div>
+      </div>
+      <div class="summary-card green" style="margin-top:10px;">
+        <div class="emoji-title">🎵</div>
+        <div class="tool-name" style="color:var(--green-color)">Suno AI</div>
+        <span>키워드만 입력하면 AI가 노래를 만들어줌</span>
+      </div>
+      <div class="highlight-box blue" style="margin-top:12px;">
+        💡 오늘은 AI로 <strong>직접 결과물</strong>을 만들어봐요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 19: 오늘 배울 것 -->
+    <section>
+      <h2>📋 오늘 배울 것</h2>
+      <div class="flow-wrap">
+        <div class="flow-item orange">🖼️ 미리캔버스<br><small>AI 소개 카드 만들기</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item green">📖 NotebookLM<br><small>AI 질문 + 요약 듣기</small></div>
+      </div>
+      <div class="highlight-box" style="margin-top:20px;">
+        🎯 <strong>오늘 목표</strong><br>
+        수업이 끝나면 <b>내 소개 카드</b> 1장을 직접 완성해서 가져가요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 20: 미리캔버스 소개 -->
+    <section>
+      <h2>🖼️ 미리캔버스 소개</h2>
+      <div class="tool-card orange">
+        <strong>미리캔버스</strong>
+        <span>한국형 AI 디자인 도구예요.<br>
+        템플릿을 골라서 내용만 바꾸면 예쁜 카드, 포스터를 만들 수 있어요!</span>
+      </div>
+      <div class="url-box">
+        <a href="https://miricanvas.com" target="_blank"
+           style="color:var(--main-color); text-decoration:none; font-weight:700;">
+          🌐 miricanvas.com
+        </a>
+      </div>
+      <div class="two-col">
+        <div class="highlight-box blue">
+          ✅ <strong>무료 플랜</strong><br>
+          <span>기본 템플릿 무료 사용 가능</span>
+        </div>
+        <div class="highlight-box green">
+          ✅ <strong>한국어 지원</strong><br>
+          <span>한글 폰트, 한국형 디자인 풍부</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:6px;">
+        ⚠️ <strong>주의</strong> : 회원가입이 필요해요 (구글 계정으로 가입 가능)
+      </div>
+    </section>
+
+    <!-- 슬라이드 21: 미리캔버스 STEP 1 -->
+    <section>
+      <h2>🖼️ 미리캔버스 — STEP 1</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>사이트 접속하기</strong>
+          <span>브라우저 주소창에 <b>miricanvas.com</b> 입력 후 Enter</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>회원가입 / 로그인</strong>
+          <span>우측 상단 "로그인" → 구글 계정으로 로그인</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">3</div>
+        <div class="step-content">
+          <strong>새 디자인 만들기 클릭</strong>
+          <span>메인 화면에서 <b>"새 디자인 만들기"</b> 버튼 클릭</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        💡 학교 구글 계정이 있으면 별도 가입 없이 바로 로그인 가능해요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 22: 미리캔버스 STEP 2 -->
+    <section>
+      <h2>🖼️ 미리캔버스 — STEP 2</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>템플릿 검색하기</strong>
+          <span>검색창에 <b>"자기소개"</b> 또는 <b>"소개 카드"</b> 입력</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>마음에 드는 템플릿 선택</strong>
+          <span>여러 템플릿 중 마음에 드는 디자인을 클릭하세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">3</div>
+        <div class="step-content">
+          <strong>"이 템플릿 사용하기" 클릭</strong>
+          <span>선택한 템플릿으로 편집 화면이 열려요</span>
+        </div>
+      </div>
+      <div class="highlight-box">
+        💡 무료(🆓) 표시가 있는 템플릿만 골라요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 23: 미리캔버스 STEP 3 -->
+    <section>
+      <h2>🖼️ 미리캔버스 — STEP 3</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>텍스트 내용 바꾸기</strong>
+          <span>글자를 클릭하면 내용을 수정할 수 있어요.<br>
+          이름, 좋아하는 것, 꿈 등을 입력해보세요</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>AI 이미지 기능 사용하기</strong>
+          <span>왼쪽 메뉴 → <b>"AI 이미지"</b> 클릭 → 원하는 그림 설명 입력</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">3</div>
+        <div class="step-content">
+          <strong>생성된 이미지 삽입</strong>
+          <span>마음에 드는 AI 이미지를 클릭하면 카드에 바로 들어가요</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        🎨 <strong>AI 이미지 입력 예시</strong><br>
+        "귀여운 강아지", "봄날 꽃밭", "우주를 나는 고양이"
+      </div>
+    </section>
+
+    <!-- 슬라이드 24: 미리캔버스 STEP 4 -->
+    <section>
+      <h2>🖼️ 미리캔버스 — STEP 4</h2>
+      <div class="step-box">
+        <div class="step-number orange">1</div>
+        <div class="step-content">
+          <strong>전체 디자인 확인하기</strong>
+          <span>완성된 카드를 전체적으로 살펴보고 마음에 안 드는 부분 수정</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number orange">2</div>
+        <div class="step-content">
+          <strong>다운로드 저장</strong>
+          <span>우측 상단 <b>"다운로드"</b> 버튼 → PNG 또는 JPG 선택 → 저장</span>
+        </div>
+      </div>
+      <div class="question-box">
+        💬 <strong>완성 후 이야기 나눠봐요!</strong><br><br>
+        "내가 만든 소개 카드를 친구들에게 보여주세요!"<br>
+        "어떤 부분이 가장 마음에 드나요?"
+      </div>
+    </section>
+
+    <!-- 슬라이드 25: NotebookLM 소개 -->
+    <section>
+      <h2>📖 NotebookLM 소개</h2>
+      <div class="tool-card green">
+        <strong>NotebookLM</strong>
+        <span>구글이 만든 AI 공부 도우미예요.<br>
+        자료를 올리면 AI가 읽고 요약해주고, 궁금한 것을 물어볼 수 있어요!</span>
+      </div>
+      <div class="url-box">
+        <a href="https://notebooklm.com" target="_blank"
+           style="color:var(--main-color); text-decoration:none; font-weight:700;">
+          🌐 notebooklm.com
+        </a>
+      </div>
+      <div class="two-col">
+        <div class="highlight-box blue">
+          ✅ <strong>무료</strong><br>
+          <span>구글 계정으로 무료 사용</span>
+        </div>
+        <div class="highlight-box green">
+          🎧 <strong>특별 기능</strong><br>
+          <span>AI가 팟캐스트처럼 요약을 읽어줘요</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:6px;">
+        ⚠️ <strong>주의</strong> : 구글 계정 로그인 필요 / 영어 자료가 더 잘 작동해요
+      </div>
+    </section>
+
+    <!-- 슬라이드 26: NotebookLM STEP 1 -->
+    <section>
+      <h2>📖 NotebookLM — STEP 1</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>사이트 접속하기</strong>
+          <span>브라우저 주소창에 <b>notebooklm.google.com</b> 입력 후 Enter</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>구글 계정 로그인</strong>
+          <span>학교 구글 계정 또는 개인 구글 계정으로 로그인</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">3</div>
+        <div class="step-content">
+          <strong>새 노트북 만들기</strong>
+          <span><b>"새 노트북"</b> 또는 <b>"New Notebook"</b> 버튼 클릭</span>
+        </div>
+      </div>
+      <div class="highlight-box green">
+        💡 노트북 = AI와 함께 공부하는 나만의 공간이에요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 27: NotebookLM STEP 2 -->
+    <section>
+      <h2>📖 NotebookLM — STEP 2</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>자료 추가하기</strong>
+          <span>왼쪽 <b>"소스 추가"</b> 클릭 → 아래 방법 중 선택</span>
+        </div>
+      </div>
+      <div class="highlight-box blue" style="margin: 8px 0;">
+        📎 <strong>자료 추가 방법</strong><br>
+        · PDF 파일 업로드<br>
+        · 웹사이트 URL 붙여넣기<br>
+        · 직접 텍스트 입력
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>수업 추천 자료</strong>
+          <span>선생님이 미리 준비한 PDF 1장을 업로드해요<br>
+          (예: 환경, 동물, 우주 등 학생 관심 주제)</span>
+        </div>
+      </div>
+      <div class="highlight-box">
+        💡 자료가 업로드되면 AI가 자동으로 내용을 읽기 시작해요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 28: NotebookLM STEP 3 -->
+    <section>
+      <h2>📖 NotebookLM — STEP 3</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>AI에게 질문하기</strong>
+          <span>오른쪽 채팅창에 궁금한 것을 입력하고 Enter</span>
+        </div>
+      </div>
+      <div class="highlight-box green" style="margin: 8px 0;">
+        💬 <strong>질문 예시</strong><br>
+        · "이 내용을 3줄로 요약해줘"<br>
+        · "가장 중요한 내용이 뭐야?"<br>
+        · "초등학생도 알 수 있게 쉽게 설명해줘"
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>AI 답변 확인</strong>
+          <span>AI가 업로드한 자료를 바탕으로 답변해줘요.<br>
+          틀린 내용이 있는지 함께 확인해봐요</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 29: NotebookLM STEP 4 -->
+    <section>
+      <h2>📖 NotebookLM — STEP 4</h2>
+      <div class="step-box">
+        <div class="step-number green">1</div>
+        <div class="step-content">
+          <strong>Audio Overview 찾기</strong>
+          <span>오른쪽 패널에서 <b>"Audio Overview"</b> 섹션 찾기</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">2</div>
+        <div class="step-content">
+          <strong>"Generate" 클릭</strong>
+          <span>버튼을 누르면 AI 두 명이 대화하듯 자료를 요약해줘요<br>
+          (1~2분 소요)</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-number green">3</div>
+        <div class="step-content">
+          <strong>팟캐스트 듣기</strong>
+          <span>재생 버튼을 눌러 AI가 읽어주는 요약을 들어봐요</span>
+        </div>
+      </div>
+      <div class="question-box">
+        💬 <strong>이야기 나눠봐요!</strong><br><br>
+        "AI가 설명해준 내용 중 가장 흥미로웠던 것은 무엇인가요?"
+      </div>
+    </section>
+
+    <!-- 슬라이드 30: 전체 마무리 -->
+    <section>
+      <h2>🎊 2차시 마무리</h2>
+      <p style="text-align:center; margin-bottom:14px;">2차시에 배운 도구를 정리해봐요!</p>
+      <div class="two-col">
+        <div class="summary-card orange">
+          <div class="emoji-title">🖼️</div>
+          <div class="tool-name" style="color:var(--accent-color)">미리캔버스</div>
+          <span>AI로 예쁜 소개 카드 만들기</span>
+        </div>
+        <div class="summary-card green">
+          <div class="emoji-title">📖</div>
+          <div class="tool-name" style="color:var(--green-color)">NotebookLM</div>
+          <span>AI 공부 도우미 + 팟캐스트 요약</span>
+        </div>
+      </div>
+      <div class="question-box" style="margin-top:14px;">
+        💬 <strong>전체 소감 나눠봐요!</strong><br><br>
+        "2번의 수업에서 가장 재미있었던 도구는 무엇인가요?"<br>
+        "앞으로 어떤 상황에서 써보고 싶나요?"
+      </div>
+    </section>
+
+    <!-- 슬라이드 31: 엔딩 -->
+    <section class="ending-slide">
+      <h2>🌟 수고했어요!</h2>
+      <p style="color:white; font-size:1.1em; margin: 20px 0;">오늘 배운 5가지 AI 도구</p>
+      <div class="flow-wrap">
+        <div class="flow-item" style="background:rgba(255,255,255,0.25);">🎮 Quick, Draw!</div>
+        <div class="flow-item" style="background:rgba(255,255,255,0.25);">🎨 AutoDraw</div>
+        <div class="flow-item" style="background:rgba(255,255,255,0.25);">🎵 Suno AI</div>
+        <div class="flow-item" style="background:rgba(255,255,255,0.25);">🖼️ 미리캔버스</div>
+        <div class="flow-item" style="background:rgba(255,255,255,0.25);">📖 NotebookLM</div>
+      </div>
+      <p style="color:rgba(255,255,255,0.9); margin-top:24px; font-size:0.9em;">
+        AI는 도구예요. 여러분이 잘 활용할수록<br>더 많은 것을 만들 수 있어요! 💪
+      </p>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    center: true,
+    controls: true,
+    progress: true,
+    slideNumber: true,
+  });
+</script>
+</body>
+</html>
