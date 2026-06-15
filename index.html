@@ -6,17 +6,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
   <style>
-
-    /* ════════════════════════
-       1. 전역 변수
-    ════════════════════════ */
     :root {
       --main:       #6C8EBF;
       --sub:        #7EC8C8;
       --accent:     #F0A500;
       --danger:     #E53E3E;
       --bg:         #F8F9FF;
-      --bg-soft:    #F0F7F7;
       --white:      #FFFFFF;
       --text:       #2D3748;
       --text-light: #718096;
@@ -25,9 +20,6 @@
       --radius:     10px;
     }
 
-    /* ════════════════════════
-       2. 기본 설정
-    ════════════════════════ */
     .reveal {
       font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
       background: var(--bg);
@@ -41,49 +33,42 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: stretch;
-      padding: 12px 28px 10px 28px;
+      padding: 24px 40px 20px 40px;
       overflow: hidden;
       text-align: left;
     }
 
-    /* ════════════════════════
-       3. 타이포그래피
-    ════════════════════════ */
+    /* ── 타이포그래피 ── */
     .reveal h1, .reveal h2, .reveal h3,
     .reveal p, .reveal li, .reveal span, .reveal td {
       word-break: keep-all;
       word-wrap: break-word;
       text-align: left;
     }
-
-    /* 슬라이드 제목 */
-    .slide-title {
-      font-size: 1.1em;
-      font-weight: 700;
-      color: var(--main);
-      border-bottom: 3px solid var(--main);
-      padding-bottom: 6px;
-      margin-bottom: 10px;
-      margin-top: 0;
-      flex-shrink: 0;
-    }
-
-    /* 본문 */
     .reveal p, .reveal li, .reveal span {
       font-size: 0.82em;
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--text);
     }
-
     strong {
       color: var(--text);
       font-weight: 700;
       word-break: keep-all;
     }
 
-    /* ════════════════════════
-       4. 파트 뱃지
-    ════════════════════════ */
+    /* ── 슬라이드 제목 ── */
+    .slide-title {
+      font-size: 1.15em;
+      font-weight: 700;
+      color: var(--main);
+      border-bottom: 3px solid var(--main);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    /* ── 파트 뱃지 ── */
     .part-badge {
       display: inline-block;
       background: var(--main);
@@ -95,22 +80,16 @@
       margin-bottom: 4px;
       flex-shrink: 0;
       align-self: flex-start;
-      letter-spacing: 0.3px;
     }
     .part-badge.mint   { background: var(--sub); }
     .part-badge.amber  { background: var(--accent); }
     .part-badge.danger { background: var(--danger); }
 
-    /* ════════════════════════
-       5. 표지 슬라이드
-    ════════════════════════ */
-
-    /* 메인 표지 */
+    /* ── 표지 ── */
     .cover-main {
       background: linear-gradient(135deg, #6C8EBF 0%, #4A6FA5 100%) !important;
       justify-content: center !important;
       align-items: center !important;
-      text-align: center !important;
     }
     .cover-main .cover-badge {
       display: inline-block;
@@ -123,12 +102,10 @@
       margin-bottom: 14px;
     }
     .cover-main h1 {
-      font-size: 2em;
+      font-size: 2.2em;
       font-weight: 800;
       line-height: 1.3;
-      background: linear-gradient(
-        90deg, #fff 0%, #ffe9a0 45%, #fff 55%, #fff 100%
-      );
+      background: linear-gradient(90deg, #fff 0%, #ffe9a0 45%, #fff 55%, #fff 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -139,7 +116,7 @@
     }
     .cover-main .cover-sub {
       color: rgba(255,255,255,0.85);
-      font-size: 0.88em;
+      font-size: 0.9em;
       text-align: center;
       margin: 0 0 6px 0;
     }
@@ -150,24 +127,22 @@
       margin: 0;
     }
 
-    /* 파트 표지 */
     .cover-part {
       background: linear-gradient(135deg, #7EC8C8 0%, #5BA8A8 100%) !important;
       justify-content: center !important;
       align-items: center !important;
-      text-align: center !important;
     }
     .cover-part .part-num {
       display: inline-block;
       background: rgba(255,255,255,0.25);
       border-radius: 30px;
       padding: 4px 16px;
-      font-size: 0.72em;
+      font-size: 0.75em;
       color: var(--white);
       margin-bottom: 10px;
     }
     .cover-part h2 {
-      font-size: 1.6em;
+      font-size: 1.8em;
       font-weight: 800;
       color: var(--white) !important;
       border: none !important;
@@ -176,106 +151,73 @@
     }
     .cover-part .part-desc {
       color: rgba(255,255,255,0.88);
-      font-size: 0.85em;
+      font-size: 0.88em;
       text-align: center;
     }
 
-    /* ════════════════════════
-       6. 카드 컴포넌트
-    ════════════════════════ */
+    .cover-end {
+      background: linear-gradient(135deg, #F0A500 0%, #c97f00 100%) !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .cover-end h2 {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: var(--white) !important;
+      border: none !important;
+      text-align: center;
+    }
+    .cover-end p {
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+    }
+
+    /* ── 카드 ── */
     .card {
       background: var(--white);
       border-radius: var(--radius);
       border: 1.5px solid var(--border);
-      padding: 12px 16px;
-      margin: 5px 0;
+      padding: 10px 14px;
+      margin: 4px 0;
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: var(--shadow);
       border-color: var(--main);
+    }
+    .card.active {
+      background: #EBF4FF;
+      border-color: var(--main);
+      border-left: 4px solid var(--main);
+      box-shadow: var(--shadow);
     }
     .card.blue   { border-left: 4px solid var(--main); }
     .card.mint   { border-left: 4px solid var(--sub); }
     .card.amber  { border-left: 4px solid var(--accent); }
     .card.danger { border-left: 4px solid var(--danger); }
 
-    /* ════════════════════════
-       7. STEP 박스
-    ════════════════════════ */
-    .step-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    /* ── 2단/3단 그리드 ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       margin: 6px 0;
     }
-    .step-box {
-      display: flex;
-      align-items: flex-start;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 9px 14px;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
-    }
-    .step-box:hover {
-      transform: translateX(6px);
-      border-color: var(--main);
-      background: #F0F5FF;
-      box-shadow: var(--shadow);
-    }
-    .step-box:hover .step-num {
-      transform: scale(1.12);
-    }
-    .step-num {
-      width: 34px;
-      height: 34px;
-      min-width: 34px;
-      border-radius: 50%;
-      background: var(--main);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.95rem;
-      margin-right: 12px;
-      flex-shrink: 0;
-      transition: transform 0.22s ease;
-    }
-    .step-num.mint   { background: var(--sub); }
-    .step-num.amber  { background: var(--accent); }
-    .step-num.danger { background: var(--danger); }
-    .step-content {
-      flex: 1;
-      min-width: 0;
-    }
-    .step-content strong {
-      display: block;
-      font-size: 0.86em;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.35;
-      word-break: keep-all;
-      margin-bottom: 2px;
-    }
-    .step-content span {
-      font-size: 0.76em;
-      color: var(--text-light);
-      line-height: 1.4;
-      word-break: keep-all;
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 6px 0;
     }
 
-    /* ════════════════════════
-       8. 하이라이트 박스
-    ════════════════════════ */
+    /* ── 하이라이트 박스 ── */
     .hbox {
       border-radius: var(--radius);
-      padding: 6px 12px;
-      margin: 4px 0;
-      font-size: 0.76em;
-      line-height: 1.4;
+      padding: 7px 14px;
+      margin: 5px 0;
+      font-size: 0.8em;
+      line-height: 1.45;
       word-break: keep-all;
       color: var(--text);
     }
@@ -284,9 +226,7 @@
     .hbox.amber  { background: #FEF3DC; border: 1.5px solid var(--accent); }
     .hbox.danger { background: #FFF0F0; border: 1.5px solid var(--danger); }
 
-    /* ════════════════════════
-       9. URL 박스
-    ════════════════════════ */
+    /* ── URL 박스 ── */
     .url-box {
       background: #EBF4FF;
       border: 2px dashed var(--main);
@@ -294,13 +234,12 @@
       padding: 7px 16px;
       margin: 6px 0;
       text-align: center;
-      transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+      transition: background 0.22s ease, transform 0.22s ease;
       cursor: pointer;
     }
     .url-box:hover {
       background: #D6E8FF;
-      transform: scale(1.015);
-      box-shadow: var(--shadow);
+      transform: scale(1.01);
     }
     .url-box a {
       color: var(--main);
@@ -309,61 +248,41 @@
       text-decoration: none;
     }
 
-    /* ════════════════════════
-       10. 2단 그리드
-    ════════════════════════ */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin: 6px 0;
-    }
-    .three-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      margin: 6px 0;
-    }
-
-    /* ════════════════════════
-       11. 도구 카드 그리드
-    ════════════════════════ */
+    /* ── 도구 카드 그리드 ── */
     .tool-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
-      margin: 5px 0;
+      gap: 8px;
+      margin: 8px 0;
       flex: 1;
     }
     .tool-card {
       background: var(--white);
       border-radius: var(--radius);
       border: 1.5px solid var(--border);
-      padding: 7px 6px;
+      padding: 10px 8px;
       text-align: center;
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-      cursor: default;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .tool-card .tc-icon { font-size: 1.2em; margin-bottom: 3px; }
-    .tool-card .tc-name {
-      font-size: 0.72em;
-      font-weight: 700;
-      color: var(--main);
-      word-break: keep-all;
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: var(--main);
     }
-    .tool-card .tc-desc {
-      font-size: 0.62em;
-      color: var(--text-light);
-      margin-top: 2px;
-      word-break: keep-all;
+    .tool-card.active {
+      background: #EBF4FF;
+      border: 2px solid var(--main);
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
     }
+    .tool-card .tc-icon { font-size: 1.4em; margin-bottom: 4px; }
+    .tool-card .tc-name { font-size: 0.74em; font-weight: 700; color: var(--main); }
+    .tool-card .tc-desc { font-size: 0.64em; color: var(--text-light); margin-top: 2px; }
 
-    /* ════════════════════════
-       12. 마인드셋 / 체크 아이템
-    ════════════════════════ */
+    /* ── list-item ── */
     .list-item {
       display: flex;
       align-items: flex-start;
@@ -371,13 +290,20 @@
       background: var(--white);
       border-radius: var(--radius);
       border: 1.5px solid var(--border);
-      padding: 7px 12px;
+      padding: 8px 12px;
       margin: 4px 0;
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .list-item:hover {
       transform: translateX(5px);
       border-color: var(--main);
+      box-shadow: var(--shadow);
+    }
+    .list-item.active {
+      background: #EBF4FF;
+      border-color: var(--main);
+      border-left: 4px solid var(--main);
+      transform: translateX(5px);
       box-shadow: var(--shadow);
     }
     .list-icon {
@@ -393,15 +319,15 @@
       font-weight: 800;
       font-size: 0.82rem;
       flex-shrink: 0;
+      transition: transform 0.22s ease;
     }
+    .list-item:hover .list-icon,
+    .list-item.active .list-icon { transform: scale(1.1); }
     .list-icon.mint   { background: var(--sub); }
     .list-icon.amber  { background: var(--accent); }
     .list-icon.danger { background: var(--danger); }
-    .list-icon.emoji  { background: transparent; font-size: 1.3em; }
-    .list-body {
-      flex: 1;
-      min-width: 0;
-    }
+    .list-icon.emoji  { background: transparent; font-size: 1.2em; }
+    .list-body { flex: 1; min-width: 0; }
     .list-body strong {
       display: block;
       font-size: 0.84em;
@@ -417,9 +343,7 @@
       line-height: 1.35;
     }
 
-    /* ════════════════════════
-       13. 이미지 placeholder
-    ════════════════════════ */
+    /* ── 이미지 박스 ── */
     .img-box {
       background: #EDF2F7;
       border: 2px dashed #CBD5E0;
@@ -430,27 +354,24 @@
       justify-content: center;
       color: #A0AEC0;
       font-size: 0.78em;
-      padding: 16px;
-      margin: 6px 0;
       word-break: keep-all;
       text-align: center;
+      overflow: hidden;
     }
     .img-box .ib-icon { font-size: 2em; margin-bottom: 6px; }
     .img-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 8px;
     }
 
-    /* ════════════════════════
-       14. 흐름 표시
-    ════════════════════════ */
+    /* ── 흐름 표시 ── */
     .flow-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
       margin: 8px 0;
     }
@@ -458,53 +379,129 @@
       background: var(--main);
       color: var(--white);
       border-radius: 8px;
-      padding: 7px 14px;
+      padding: 7px 16px;
       font-size: 0.76em;
       font-weight: 600;
       text-align: center;
       transition: transform 0.22s ease, box-shadow 0.22s ease;
-      word-break: keep-all;
     }
-    .flow-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
+    .flow-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
     .flow-item.mint  { background: var(--sub); }
     .flow-item.amber { background: var(--accent); }
     .flow-arrow { font-size: 1.1em; color: #CBD5E0; }
 
     /* ════════════════════════
-       15. 마무리 / 엔딩
+       아코디언
     ════════════════════════ */
-    .cover-end {
-      background: linear-gradient(135deg, #F0A500 0%, #c97f00 100%) !important;
-      justify-content: center !important;
-      align-items: center !important;
-      text-align: center !important;
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 6px 0;
     }
-    .cover-end h2 {
-      font-size: 1.8em;
+    .acc-item {
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .acc-item.open {
+      border-color: var(--main);
+      box-shadow: var(--shadow);
+    }
+    .acc-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      background: var(--white);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.22s ease;
+    }
+    .acc-btn:hover { background: #F0F5FF; }
+    .acc-item.open .acc-btn { background: #EBF4FF; }
+    .acc-num {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: var(--main);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 800;
-      color: var(--white) !important;
-      border: none !important;
-      text-align: center;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      transition: transform 0.22s ease;
     }
-    .cover-end p {
-      color: rgba(255,255,255,0.88);
-      text-align: center;
+    .acc-item.open .acc-num { transform: scale(1.1); }
+    .acc-num.mint  { background: var(--sub); }
+    .acc-num.amber { background: var(--accent); }
+    .acc-num.danger{ background: var(--danger); }
+    .acc-label {
+      flex: 1;
+      font-size: 0.84em;
+      font-weight: 700;
+      color: var(--text);
+      word-break: keep-all;
+    }
+    .acc-item.open .acc-label { color: var(--main); }
+    .acc-arrow {
+      font-size: 0.75em;
+      color: var(--text-light);
+      transition: transform 0.22s ease;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: #F8FBFF;
+      font-size: 0.78em;
+      color: var(--text-light);
+      word-break: keep-all;
+      line-height: 1.45;
+      padding: 0 14px 0 52px;
+    }
+    .acc-item.open .acc-body {
+      max-height: 200px;
+      padding: 8px 14px 10px 52px;
     }
 
-    /* ════════════════════════
-       16. 강조 텍스트
-    ════════════════════════ */
+    /* ── 실습 레이아웃 (좌: 아코디언, 우: 이미지) ── */
+    .practice-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+      min-height: 0;
+    }
+    .practice-left {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .practice-right {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .practice-right .img-box {
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ── 강조 텍스트 ── */
     .t-main   { color: var(--main);   font-weight: 700; }
     .t-mint   { color: var(--sub);    font-weight: 700; }
     .t-amber  { color: var(--accent); font-weight: 700; }
     .t-danger { color: var(--danger); font-weight: 700; }
 
-    /* ════════════════════════
-       17. 애니메이션
-    ════════════════════════ */
+    /* ── 애니메이션 ── */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -513,8 +510,6 @@
       0%   { background-position: -200% center; }
       100% { background-position:  200% center; }
     }
-
-    /* 순차 등장 */
     .seq > * {
       opacity: 0;
       animation: fadeInUp 0.45s ease forwards;
@@ -526,136 +521,11 @@
     .seq > *:nth-child(5) { animation-delay: 0.57s; }
     .seq > *:nth-child(6) { animation-delay: 0.70s; }
 
-    /* ════════════════════════
-       18. 슬라이드 번호
-    ════════════════════════ */
     .reveal .slide-number {
       background: transparent;
       color: var(--text-light);
       font-size: 0.68em;
-      bottom: 8px;
-      right: 12px;
     }
-        /* ════════════════════════
-       19. 호버 / 클릭 강화
-    ════════════════════════ */
-
-    /* list-item 호버 강화 */
-    .list-item:hover {
-      transform: translateX(8px);
-      border-color: var(--main);
-      background: #F0F5FF;
-      box-shadow: var(--shadow);
-    }
-
-    /* list-item 클릭 유지 */
-    .list-item.active {
-      background: #E8F0FF;
-      border-color: var(--main);
-      border-left: 4px solid var(--main);
-      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
-      transform: translateX(8px);
-    }
-    .list-item.active .list-icon {
-      transform: scale(1.15);
-      box-shadow: 0 2px 8px rgba(108,142,191,0.4);
-    }
-    .list-item.active .list-body strong {
-      color: var(--main);
-    }
-
-    /* danger 계열 active */
-    .list-item.active .list-icon.danger {
-      box-shadow: 0 2px 8px rgba(229,62,62,0.4);
-    }
-    .list-item.active:has(.list-icon.danger) {
-      background: #FFF5F5;
-      border-color: var(--danger);
-      border-left: 4px solid var(--danger);
-      box-shadow: 0 4px 20px rgba(229,62,62,0.2);
-    }
-    .list-item.active:has(.list-icon.danger) .list-body strong {
-      color: var(--danger);
-    }
-
-    /* amber 계열 active */
-    .list-item.active:has(.list-icon.amber) {
-      background: #FFF8E8;
-      border-color: var(--accent);
-      border-left: 4px solid var(--accent);
-      box-shadow: 0 4px 20px rgba(240,165,0,0.2);
-    }
-    .list-item.active:has(.list-icon.amber) .list-body strong {
-      color: var(--accent);
-    }
-
-    /* step-box 클릭 유지 */
-    .step-box.active {
-      background: #E8F0FF;
-      border-color: var(--main);
-      border-left: 4px solid var(--main);
-      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
-      transform: translateX(8px);
-    }
-    .step-box.active .step-num {
-      transform: scale(1.15);
-      box-shadow: 0 2px 8px rgba(108,142,191,0.4);
-    }
-    .step-box.active .step-content strong {
-      color: var(--main);
-    }
-
-    /* mint step active */
-    .step-box.active:has(.step-num.mint) {
-      background: #E6F7F7;
-      border-color: var(--sub);
-      border-left: 4px solid var(--sub);
-    }
-    .step-box.active:has(.step-num.mint) .step-content strong {
-      color: var(--sub);
-    }
-
-    /* amber step active */
-    .step-box.active:has(.step-num.amber) {
-      background: #FFF8E8;
-      border-color: var(--accent);
-      border-left: 4px solid var(--accent);
-    }
-    .step-box.active:has(.step-num.amber) .step-content strong {
-      color: var(--accent);
-    }
-
-    /* tool-card 클릭 유지 */
-    .tool-card.active {
-      background: #E8F0FF;
-      border-color: var(--main);
-      border: 2px solid var(--main);
-      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
-      transform: translateY(-5px);
-    }
-    .tool-card.active .tc-name {
-      color: var(--main);
-    }
-    .tool-card.active .tc-icon {
-      transform: scale(1.2);
-      display: inline-block;
-    }
-
-    /* card 클릭 유지 */
-    .card.active {
-      background: #F0F5FF;
-      border-color: var(--main);
-      box-shadow: 0 4px 20px rgba(108,142,191,0.25);
-      transform: translateY(-4px);
-    }
-
-    /* 전환 통일 */
-    .list-icon,
-    .step-num,
-    .tc-icon {
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-
   </style>
 </head>
 <body>
@@ -667,7 +537,7 @@
       <div class="cover-badge">🎓 교육복지 연계 AI 활용 연수</div>
       <h1>AI, 이렇게<br>쓰면 됩니다</h1>
       <p class="cover-sub">교육복지사를 위한 AI 도구 활용 실습 연수</p>
-      <p class="cover-date">2026. 06. 25 &nbsp;|&nbsp; 김제중앙중 교육복지실</p>
+      <p class="cover-date">2026. 06. 25.(목) &nbsp;|&nbsp; 김제교육지원청</p>
     </section>
 
     <!-- 슬라이드 2: 생활 속 AI -->
@@ -675,18 +545,18 @@
       <div class="part-badge">오프닝</div>
       <div class="slide-title">🤔 AI, 이미 쓰고 있었어요</div>
       <div class="two-col seq">
-        <div class="card blue" style="text-align:center; padding:18px 14px;">
-          <div style="font-size:2em; margin-bottom:8px;">📺</div>
+        <div class="card blue" style="text-align:center; padding:20px 14px;">
+          <div style="font-size:2.2em; margin-bottom:10px;">📺</div>
           <strong class="t-main">유튜브 추천 영상</strong>
           <p style="margin-top:6px;">내가 본 영상을 AI가 학습해서<br>다음에 볼 영상을 추천해줘요</p>
         </div>
-        <div class="card mint" style="text-align:center; padding:18px 14px;">
-          <div style="font-size:2em; margin-bottom:8px;">🛍️</div>
+        <div class="card mint" style="text-align:center; padding:20px 14px;">
+          <div style="font-size:2.2em; margin-bottom:10px;">🛍️</div>
           <strong class="t-mint">네이버 맞춤 광고</strong>
           <p style="margin-top:6px;">내가 검색한 키워드를 AI가 기억해서<br>관련 광고를 보여줘요</p>
         </div>
       </div>
-      <div class="hbox blue seq" style="margin-top:8px; text-align:center;">
+      <div class="hbox blue" style="margin-top:10px; text-align:center;">
         💡 AI는 새로운 것이 아니에요.
         <span class="t-amber">이미 우리 일상 속에 있습니다.</span>
       </div>
@@ -696,23 +566,22 @@
     <section>
       <div class="part-badge">오프닝</div>
       <div class="slide-title">🤖 AI가 뭔가요?</div>
-      <div class="card blue seq" style="text-align:center; padding:14px;">
+      <div class="card blue" style="text-align:center; padding:16px; margin-bottom:10px;">
         <p>AI는 <span class="t-amber">엄청나게 많은 것을 읽고 배운 조수</span>예요.<br>
         시키는 일은 잘 하지만, <strong>판단은 내가 해야 합니다.</strong></p>
       </div>
-      <div class="two-col seq" style="margin-top:8px;">
+      <div class="two-col">
         <div class="card mint">
           <strong>✅ AI가 잘 하는 것</strong>
-          <p style="margin-top:4px;">글 쓰기, 요약, 번역<br>아이디어 제안, 반복 작업</p>
+          <p style="margin-top:6px;">글 쓰기, 요약, 번역<br>아이디어 제안, 반복 작업</p>
         </div>
         <div class="card amber">
           <strong>⚠️ AI가 못 하는 것</strong>
-          <p style="margin-top:4px;">사실 판단, 최종 결정<br>감정적 공감, 책임지기</p>
+          <p style="margin-top:6px;">사실 판단, 최종 결정<br>감정적 공감, 책임지기</p>
         </div>
       </div>
-      <div class="hbox amber seq">
-        🎯 AI는 <span class="t-amber">도구</span>입니다.
-        잘 쓰는 사람이 더 많은 일을 할 수 있어요.
+      <div class="hbox amber" style="margin-top:8px;">
+        🎯 AI는 <span class="t-amber">도구</span>입니다. 잘 쓰는 사람이 더 많은 일을 할 수 있어요.
       </div>
     </section>
 
@@ -727,24 +596,21 @@
           <div class="list-icon danger">1</div>
           <div class="list-body">
             <strong>AI 결과물을 그대로 쓰지 마세요</strong>
-            <span>AI가 만든 내용은 초안입니다.
-            반드시 내가 검토 후 사용하세요.</span>
+            <span>AI가 만든 내용은 초안입니다. 반드시 내가 검토 후 사용하세요.</span>
           </div>
         </div>
         <div class="list-item">
           <div class="list-icon danger">2</div>
           <div class="list-body">
             <strong>개인정보·민감정보는 절대 입력하지 마세요</strong>
-            <span>학생 이름, 주소, 가정환경 등은
-            AI에게 알려주면 안 됩니다.</span>
+            <span>학생 이름, 주소, 가정환경 등은 AI에게 알려주면 안 됩니다.</span>
           </div>
         </div>
         <div class="list-item">
           <div class="list-icon danger">3</div>
           <div class="list-body">
             <strong>AI에게 만능을 기대하지 마세요</strong>
-            <span>틀린 정보를 자신 있게 말하기도 합니다.
-            비판적으로 보세요.</span>
+            <span>틀린 정보를 자신 있게 말하기도 합니다. 비판적으로 보세요.</span>
           </div>
         </div>
       </div>
@@ -752,31 +618,28 @@
 
     <!-- 슬라이드 5: AI 마인드셋 -->
     <section>
-      <div class="part-badge">💡 활용 마인드셋</div>
+      <div class="part-badge amber">💡 활용 마인드셋</div>
       <div class="slide-title">💡 이렇게 쓰면 달라집니다</div>
       <div class="seq">
         <div class="list-item">
           <div class="list-icon amber">1</div>
           <div class="list-body">
             <strong>무작정 만들라 하지 말고, 대화하며 계획부터</strong>
-            <span>AI와 먼저 대화하며 방향을 잡으면
-            결과물이 훨씬 좋아져요.</span>
+            <span>AI와 먼저 대화하며 방향을 잡으면 결과물이 훨씬 좋아져요.</span>
           </div>
         </div>
         <div class="list-item">
           <div class="list-icon amber">2</div>
           <div class="list-body">
             <strong>자주 써볼수록 숙련도가 올라갑니다</strong>
-            <span>처음엔 어색해도 괜찮아요.
-            쓸수록 나만의 활용법이 생겨요.</span>
+            <span>처음엔 어색해도 괜찮아요. 쓸수록 나만의 활용법이 생겨요.</span>
           </div>
         </div>
         <div class="list-item">
           <div class="list-icon amber">3</div>
           <div class="list-body">
             <strong>쓸수록 연결과 범위가 넓어집니다</strong>
-            <span>도구 하나를 알면
-            다른 도구도 쉽게 느껴져요.</span>
+            <span>도구 하나를 알면 다른 도구도 쉽게 느껴져요.</span>
           </div>
         </div>
       </div>
@@ -873,7 +736,8 @@
         ⚠️ 아직 준비가 안 되신 분은 지금 바로 해주세요!
       </div>
     </section>
-        <!-- ===================== -->
+
+    <!-- ===================== -->
     <!--        파트 1          -->
     <!-- ===================== -->
 
@@ -881,78 +745,94 @@
     <section class="cover-part">
       <div class="part-num">🎮 파트 1</div>
       <h2>학생과 함께하는 AI</h2>
-      <p class="part-desc">
-        Quick, Draw! · AutoDraw · 킹수학 · Suno AI
-      </p>
+      <p class="part-desc">Quick, Draw! · AutoDraw · 킹수학 · Suno AI</p>
     </section>
 
     <!-- 슬라이드 9: Quick Draw 소개 -->
     <section>
       <div class="part-badge mint">파트 1 · Quick, Draw!</div>
       <div class="slide-title">🎮 Quick, Draw! — AI 그림 맞추기 게임</div>
-      <div class="card mint seq">
-        <strong>Quick, Draw!가 뭔가요?</strong>
-        <p style="margin-top:4px;">구글이 만든 AI 그림 맞추기 게임이에요.<br>
-        내가 그림을 그리면 AI가 20초 안에 무엇인지 맞춰요!</p>
-      </div>
-      <div class="url-box">
-        <a href="https://quickdraw.withgoogle.com" target="_blank">
-          🌐 quickdraw.withgoogle.com
-        </a>
-      </div>
-      <div class="two-col seq">
-        <div class="card blue">
-          <strong>✅ 무료</strong>
-          <p style="margin-top:4px;">회원가입 없이 바로 사용 가능해요</p>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card mint">
+            <strong>Quick, Draw!가 뭔가요?</strong>
+            <p style="margin-top:4px;">구글이 만든 AI 그림 맞추기 게임이에요.<br>
+            내가 그림을 그리면 AI가 20초 안에 맞춰요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://quickdraw.withgoogle.com" target="_blank">
+              🌐 quickdraw.withgoogle.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료</strong>
+              <p style="margin-top:4px;">회원가입 없이 바로 사용</p>
+            </div>
+            <div class="card mint">
+              <strong>🎯 활용</strong>
+              <p style="margin-top:4px;">수업 첫 시작 흥미 유발</p>
+            </div>
+          </div>
+          <div class="hbox blue" style="margin-top:8px;">
+            💡 잘 못 그려도 괜찮아요! AI가 얼마나 맞추는지 확인하는 게 핵심이에요.
+          </div>
         </div>
-        <div class="card mint">
-          <strong>🎯 활용</strong>
-          <p style="margin-top:4px;">수업 첫 시작 흥미 유발에 딱이에요</p>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>Quick, Draw! 메인 화면</span>
+          </div>
         </div>
-      </div>
-      <div class="hbox blue seq">
-        💡 잘 못 그려도 괜찮아요! AI가 얼마나 맞추는지 확인하는 게 핵심이에요.
       </div>
     </section>
 
-    <!-- 슬라이드 10: Quick Draw STEP -->
+    <!-- 슬라이드 10: Quick Draw 실습 -->
     <section>
       <div class="part-badge mint">파트 1 · Quick, Draw!</div>
       <div class="slide-title">🎮 Quick, Draw! — 함께 해봐요</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="step-wrap seq">
-          <div class="step-box">
-            <div class="step-num mint">1</div>
-            <div class="step-content">
-              <strong>사이트 접속하기</strong>
-              <span>quickdraw.withgoogle.com 을 열어요</span>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">사이트 접속하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">브라우저에서 quickdraw.withgoogle.com 을 열어요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">2</div>
-            <div class="step-content">
-              <strong>"시작하자!" 버튼 클릭</strong>
-              <span>화면 중앙 버튼을 클릭하면 게임 시작</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">"시작하자!" 버튼 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">화면 중앙의 버튼을 클릭하면 게임이 시작돼요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">3</div>
-            <div class="step-content">
-              <strong>제시어 확인 후 20초 안에 그리기</strong>
-              <span>화면 위쪽 단어를 보고 마우스로 그려요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">3</div>
+                <span class="acc-label">제시어 확인 후 20초 안에 그리기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">화면 위쪽 단어를 보고 마우스로 자유롭게 그려요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">4</div>
-            <div class="step-content">
-              <strong>AI 결과 확인하기</strong>
-              <span>6개 제시어 후 AI가 맞춘 결과를 확인해요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">4</div>
+                <span class="acc-label">AI 결과 확인하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">6개 제시어가 끝나면 AI가 맞춘 결과를 보여줘요</div>
             </div>
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>Quick, Draw! 실습 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>Quick, Draw! 실습 화면</span>
+          </div>
         </div>
       </div>
     </section>
@@ -961,69 +841,87 @@
     <section>
       <div class="part-badge mint">파트 1 · AutoDraw</div>
       <div class="slide-title">🎨 AutoDraw — AI 그림 도우미</div>
-      <div class="card mint seq">
-        <strong>AutoDraw가 뭔가요?</strong>
-        <p style="margin-top:4px;">구글이 만든 AI 그림 도우미예요.<br>
-        내가 대충 그린 그림을 AI가 예쁜 그림으로 바꿔줘요!</p>
-      </div>
-      <div class="url-box">
-        <a href="https://autodraw.com" target="_blank">
-          🌐 autodraw.com
-        </a>
-      </div>
-      <div class="two-col seq">
-        <div class="card blue">
-          <strong>✅ 무료</strong>
-          <p style="margin-top:4px;">회원가입 없이 바로 사용 가능해요</p>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card mint">
+            <strong>AutoDraw가 뭔가요?</strong>
+            <p style="margin-top:4px;">구글이 만든 AI 그림 도우미예요.<br>
+            내가 대충 그린 그림을 AI가 예쁜 그림으로 바꿔줘요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://autodraw.com" target="_blank">
+              🌐 autodraw.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료</strong>
+              <p style="margin-top:4px;">회원가입 없이 바로 사용</p>
+            </div>
+            <div class="card mint">
+              <strong>🎯 활용</strong>
+              <p style="margin-top:4px;">카드·포스터 제작에 활용</p>
+            </div>
+          </div>
+          <div class="hbox mint" style="margin-top:8px;">
+            💡 대충 그릴수록 AI 추천이 더 재미있어요! 완벽하게 그리려 하지 마세요 😄
+          </div>
         </div>
-        <div class="card mint">
-          <strong>🎯 활용</strong>
-          <p style="margin-top:4px;">카드, 포스터 만들 때 활용할 수 있어요</p>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>AutoDraw 메인 화면</span>
+          </div>
         </div>
-      </div>
-      <div class="hbox mint seq">
-        💡 대충 그릴수록 AI 추천이 더 재미있어요! 완벽하게 그리려 하지 마세요 😄
       </div>
     </section>
 
-    <!-- 슬라이드 12: AutoDraw STEP -->
+    <!-- 슬라이드 12: AutoDraw 실습 -->
     <section>
       <div class="part-badge mint">파트 1 · AutoDraw</div>
       <div class="slide-title">🎨 AutoDraw — 함께 해봐요</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="step-wrap seq">
-          <div class="step-box">
-            <div class="step-num mint">1</div>
-            <div class="step-content">
-              <strong>사이트 접속하기</strong>
-              <span>autodraw.com 을 열어요</span>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">사이트 접속하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">브라우저에서 autodraw.com 을 열어요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">2</div>
-            <div class="step-content">
-              <strong>자유롭게 그리기</strong>
-              <span>고양이, 집, 나무 등 무엇이든 그려보세요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">자유롭게 그리기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">고양이, 집, 나무 등 무엇이든 자유롭게 그려보세요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">3</div>
-            <div class="step-content">
-              <strong>상단 AI 추천 그림 클릭</strong>
-              <span>상단에 나타난 추천 그림 중 마음에 드는 것 클릭</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">3</div>
+                <span class="acc-label">상단 AI 추천 그림 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">그리는 동안 상단에 AI 추천 그림이 나타나요. 마음에 드는 것을 클릭하세요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">4</div>
-            <div class="step-content">
-              <strong>색상 입히고 다운로드</strong>
-              <span>색을 칠하고 우측 상단 메뉴에서 Download 클릭</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">4</div>
+                <span class="acc-label">색상 입히고 다운로드</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">왼쪽 색상 도구로 색을 칠하고 우측 상단 메뉴에서 Download 클릭</div>
             </div>
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>AutoDraw 실습 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>AutoDraw 실습 화면</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1032,65 +930,80 @@
     <section>
       <div class="part-badge mint">파트 1 · 킹수학</div>
       <div class="slide-title">📐 킹수학 — AI 수학 학습 게임</div>
-      <div class="card mint seq">
-        <strong>킹수학이 뭔가요?</strong>
-        <p style="margin-top:4px;">AI 기반 수학 학습 게임이에요.<br>
-        게임처럼 재미있게 수학 문제를 풀 수 있어요!</p>
-      </div>
-      <div class="url-box">
-        <a href="https://kingsmath.com" target="_blank">
-          🌐 kingsmath.com
-        </a>
-      </div>
-      <div class="two-col seq">
-        <div class="card blue">
-          <strong>✅ 무료 · 회원가입 불필요</strong>
-          <p style="margin-top:4px;">바로 접속해서 사용 가능해요</p>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card mint">
+            <strong>킹수학이 뭔가요?</strong>
+            <p style="margin-top:4px;">AI 기반 수학 학습 게임이에요.<br>
+            게임처럼 재미있게 수학 문제를 풀 수 있어요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://kingsmath.com" target="_blank">
+              🌐 kingsmath.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료 · 회원가입 불필요</strong>
+              <p style="margin-top:4px;">바로 접속해서 사용 가능해요</p>
+            </div>
+            <div class="card mint">
+              <strong>🎯 대상</strong>
+              <p style="margin-top:4px;">초등 · 중등 모두 가능해요</p>
+            </div>
+          </div>
+          <div class="hbox blue" style="margin-top:8px;">
+            💡 수학이 어려운 학생도 게임처럼 즐기며 자연스럽게 학습할 수 있어요!
+          </div>
         </div>
-        <div class="card mint">
-          <strong>🎯 대상</strong>
-          <p style="margin-top:4px;">초등 · 중등 모두 가능해요</p>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>킹수학 메인 화면</span>
+          </div>
         </div>
-      </div>
-      <div class="hbox blue seq">
-        💡 수학이 어려운 학생도 게임처럼 즐기며 자연스럽게 학습할 수 있어요!
       </div>
     </section>
 
-    <!-- 슬라이드 14: 킹수학 STEP -->
+    <!-- 슬라이드 14: 킹수학 실습 -->
     <section>
       <div class="part-badge mint">파트 1 · 킹수학</div>
       <div class="slide-title">📐 킹수학 — 함께 해봐요</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="step-wrap seq">
-          <div class="step-box">
-            <div class="step-num mint">1</div>
-            <div class="step-content">
-              <strong>사이트 접속하기</strong>
-              <span>kingsmath.com 을 열어요</span>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">사이트 접속하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">브라우저에서 kingsmath.com 을 열어요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">2</div>
-            <div class="step-content">
-              <strong>학년 선택하기</strong>
-              <span>초등 / 중등 중 학생 학년에 맞는 단계 선택</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">학년 선택하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">초등 / 중등 중 학생 학년에 맞는 단계를 선택해요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num mint">3</div>
-            <div class="step-content">
-              <strong>게임 선택 후 시작</strong>
-              <span>다양한 게임 중 하나를 골라서 시작해요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">3</div>
+                <span class="acc-label">게임 선택 후 시작</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">다양한 게임 중 하나를 골라서 시작해요</div>
             </div>
           </div>
         </div>
-        <div style="display:grid; grid-template-rows:1fr 1fr; gap:8px; height:100%;">
-          <div class="img-box" style="min-height:90px;">
+        <div class="practice-right" style="display:grid; grid-template-rows:1fr 1fr; gap:8px;">
+          <div class="img-box">
             <div class="ib-icon">🖼️</div>
             <span>초등 게임 화면</span>
           </div>
-          <div class="img-box" style="min-height:90px;">
+          <div class="img-box">
             <div class="ib-icon">🖼️</div>
             <span>중등 게임 화면</span>
           </div>
@@ -1102,28 +1015,38 @@
     <section>
       <div class="part-badge amber">파트 1 · Suno AI</div>
       <div class="slide-title">🎵 Suno AI — AI 노래 만들기</div>
-      <div class="card amber seq">
-        <strong>Suno AI가 뭔가요?</strong>
-        <p style="margin-top:4px;">키워드 몇 개만 입력하면 AI가 노래를 만들어줘요.<br>
-        작곡 실력이 없어도 나만의 노래를 만들 수 있어요!</p>
-      </div>
-      <div class="url-box">
-        <a href="https://suno.com" target="_blank">
-          🌐 suno.com
-        </a>
-      </div>
-      <div class="two-col seq">
-        <div class="card blue">
-          <strong>✅ 무료 플랜</strong>
-          <p style="margin-top:4px;">하루 10곡까지 무료로 만들 수 있어요</p>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card amber">
+            <strong>Suno AI가 뭔가요?</strong>
+            <p style="margin-top:4px;">키워드 몇 개만 입력하면 AI가 노래를 만들어줘요.<br>
+            작곡 실력이 없어도 나만의 노래를 만들 수 있어요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://suno.com" target="_blank">
+              🌐 suno.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료 플랜</strong>
+              <p style="margin-top:4px;">하루 10곡까지 무료 생성</p>
+            </div>
+            <div class="card amber">
+              <strong>⚠️ 로그인 필요</strong>
+              <p style="margin-top:4px;">구글 계정으로 로그인해요</p>
+            </div>
+          </div>
+          <div class="hbox amber" style="margin-top:8px;">
+            🎯 오늘 주제 : <span class="t-amber">"교육복지 선생님들의 즐거운 하루, 밝고 신나는 느낌, 한국어 가사"</span>
+          </div>
         </div>
-        <div class="card amber">
-          <strong>⚠️ 로그인 필요</strong>
-          <p style="margin-top:4px;">구글 계정으로 로그인해야 해요</p>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>Suno AI 메인 화면</span>
+          </div>
         </div>
-      </div>
-      <div class="hbox amber seq">
-        🎯 오늘 실습 주제 : <span class="t-amber">"교육복지 선생님들의 즐거운 하루, 밝고 신나는 느낌, 한국어 가사"</span>
       </div>
     </section>
 
@@ -1131,40 +1054,43 @@
     <section>
       <div class="part-badge amber">파트 1 · Suno AI</div>
       <div class="slide-title">🎵 STEP 1 — JBGPT로 가사·스타일 기획하기</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="seq">
+      <div class="practice-layout">
+        <div class="practice-left">
           <div class="hbox blue" style="margin-bottom:8px;">
             💡 Suno AI 입력 전, JBGPT로 먼저 가사와 스타일을 기획해봐요!
           </div>
-          <div class="step-wrap">
-            <div class="step-box">
-              <div class="step-num amber">1</div>
-              <div class="step-content">
-                <strong>JBGPT 접속 후 로그인</strong>
-                <span>교육청 계정으로 로그인해요</span>
-              </div>
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num amber">1</div>
+                <span class="acc-label">JBGPT 접속 후 로그인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">교육청 계정으로 JBGPT에 로그인해요</div>
             </div>
-            <div class="step-box">
-              <div class="step-num amber">2</div>
-              <div class="step-content">
-                <strong>아래 프롬프트 입력하기</strong>
-                <span>"교육복지 선생님들의 즐거운 하루를 주제로
-                Suno AI에 입력할 노래 가사와 스타일을 작성해줘.
-                밝고 신나는 느낌, 한국어 가사로"</span>
-              </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">2</div>
+                <span class="acc-label">프롬프트 입력하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">"교육복지 선생님들의 즐거운 하루를 주제로 Suno AI에 입력할 노래 가사와 스타일을 작성해줘. 밝고 신나는 느낌, 한국어 가사로"</div>
             </div>
-            <div class="step-box">
-              <div class="step-num amber">3</div>
-              <div class="step-content">
-                <strong>결과물 확인 및 복사</strong>
-                <span>JBGPT가 만든 가사와 스타일을 복사해요</span>
-              </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">3</div>
+                <span class="acc-label">결과물 확인 및 복사</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">JBGPT가 만든 가사와 스타일을 확인하고 복사해요</div>
             </div>
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>JBGPT 프롬프트 입력 + 결과 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>JBGPT 프롬프트 입력 + 결과 화면</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1173,33 +1099,40 @@
     <section>
       <div class="part-badge amber">파트 1 · Suno AI</div>
       <div class="slide-title">🎵 STEP 2 — Suno AI 접속 및 로그인</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="step-wrap seq">
-          <div class="step-box">
-            <div class="step-num amber">1</div>
-            <div class="step-content">
-              <strong>사이트 접속하기</strong>
-              <span>suno.com 을 열어요</span>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num amber">1</div>
+                <span class="acc-label">사이트 접속하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">브라우저에서 suno.com 을 열어요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num amber">2</div>
-            <div class="step-content">
-              <strong>구글 계정으로 로그인</strong>
-              <span>우측 상단 "Sign In" → 구글 계정 선택</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">2</div>
+                <span class="acc-label">구글 계정으로 로그인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">우측 상단 "Sign In" → 구글 계정 선택</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num amber">3</div>
-            <div class="step-content">
-              <strong>Create 버튼 클릭</strong>
-              <span>왼쪽 메뉴에서 "Create" 버튼을 클릭해요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">3</div>
+                <span class="acc-label">Create 버튼 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">왼쪽 메뉴에서 "Create" 버튼을 클릭해요</div>
             </div>
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>Suno AI 메인 화면 + 로그인 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>Suno AI 메인 화면 + 로그인 화면</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1208,33 +1141,40 @@
     <section>
       <div class="part-badge amber">파트 1 · Suno AI</div>
       <div class="slide-title">🎵 STEP 3 — JBGPT 결과물 붙여넣기</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="step-wrap seq">
-          <div class="step-box">
-            <div class="step-num amber">1</div>
-            <div class="step-content">
-              <strong>Song Description 입력란에 붙여넣기</strong>
-              <span>JBGPT에서 복사한 가사·스타일을 붙여넣어요</span>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num amber">1</div>
+                <span class="acc-label">Song Description에 붙여넣기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">JBGPT에서 복사한 가사·스타일을 입력란에 붙여넣어요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num amber">2</div>
-            <div class="step-content">
-              <strong>Create 버튼 클릭</strong>
-              <span>입력 완료 후 Create 버튼을 눌러요</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">2</div>
+                <span class="acc-label">Create 버튼 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">입력 완료 후 Create 버튼을 눌러요</div>
             </div>
-          </div>
-          <div class="step-box">
-            <div class="step-num amber">3</div>
-            <div class="step-content">
-              <strong>1~2분 기다리기</strong>
-              <span>AI가 노래를 만드는 중이에요. 잠시만 기다려주세요!</span>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">3</div>
+                <span class="acc-label">1~2분 기다리기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">AI가 노래를 만드는 중이에요. 잠시만 기다려주세요!</div>
             </div>
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>JBGPT 결과물 붙여넣기 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>JBGPT 결과물 붙여넣기 화면</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1243,75 +1183,705 @@
     <section>
       <div class="part-badge amber">파트 1 · Suno AI</div>
       <div class="slide-title">🎵 STEP 4 — 완성된 노래 들어보기</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="seq">
-          <div class="step-wrap">
-            <div class="step-box">
-              <div class="step-num amber">1</div>
-              <div class="step-content">
-                <strong>재생 버튼 클릭</strong>
-                <span>생성된 노래의 ▶ 버튼을 눌러 들어봐요</span>
-              </div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num amber">1</div>
+                <span class="acc-label">재생 버튼 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">생성된 노래의 ▶ 버튼을 눌러 들어봐요</div>
             </div>
-            <div class="step-box">
-              <div class="step-num amber">2</div>
-              <div class="step-content">
-                <strong>링크 복사로 공유하기</strong>
-                <span>마음에 들면 링크를 복사해서 학생들과 공유해요</span>
-              </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num amber">2</div>
+                <span class="acc-label">링크 복사로 공유하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">마음에 들면 링크를 복사해서 학생들과 공유해요</div>
             </div>
           </div>
-          <div class="hbox amber" style="margin-top:8px;">
-            🔗 <span class="t-amber">AI 도구 연결 활용!</span><br>
-            JBGPT로 기획 → Suno AI로 실행.<br>
+          <div class="hbox amber" style="margin-top:10px;">
+            🔗 <span class="t-amber">AI 도구 연결 활용!</span>
+            JBGPT로 기획 → Suno AI로 실행.
             이것이 AI 도구를 연결해서 쓰는 방법이에요.
           </div>
         </div>
-        <div class="img-box" style="min-height:200px; height:100%;">
-          <div class="ib-icon">🖼️</div>
-          <span>Suno AI 노래 생성 완료 + 재생 화면</span>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>Suno AI 노래 생성 완료 + 재생 화면</span>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- 슬라이드 20: 파트 1 마무리 -->
+        <!-- 슬라이드 20: 파트 1 마무리 -->
     <section>
       <div class="part-badge mint">파트 1 마무리</div>
       <div class="slide-title">🎉 파트 1 — 오늘 체험한 도구 정리</div>
       <div class="seq">
         <div class="list-item">
-          <div class="list-icon mint">🎮</div>
+          <div class="list-icon mint" style="font-size:1em;">🎮</div>
           <div class="list-body">
             <strong>Quick, Draw!</strong>
             <span>AI가 내 그림을 맞추는 게임 — 수업 첫 시작 흥미 유발</span>
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon mint">🎨</div>
+          <div class="list-icon mint" style="font-size:1em;">🎨</div>
           <div class="list-body">
             <strong>AutoDraw</strong>
             <span>AI가 내 그림을 예쁘게 바꿔줌 — 카드·포스터 제작 활용</span>
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon mint">📐</div>
+          <div class="list-icon mint" style="font-size:1em;">📐</div>
           <div class="list-body">
             <strong>킹수학</strong>
             <span>게임처럼 즐기는 AI 수학 학습 — 초등·중등 모두 가능</span>
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon amber">🎵</div>
+          <div class="list-icon amber" style="font-size:1em;">🎵</div>
           <div class="list-body">
             <strong>Suno AI</strong>
             <span>키워드만 입력하면 AI가 노래 완성 — JBGPT 연계 활용</span>
           </div>
         </div>
       </div>
-      <div class="hbox blue seq" style="margin-top:6px;">
+      <div class="hbox blue" style="margin-top:8px;">
         ☕ 잠깐 쉬어가요! 10분 휴식 후 파트 2를 시작합니다.
       </div>
-    </section>    
+    </section>
+
+    <!-- ===================== -->
+    <!--        파트 2          -->
+    <!-- ===================== -->
+
+    <!-- 슬라이드 21: 파트 2 표지 -->
+    <section class="cover-part">
+      <div class="part-num">🖼️ 파트 2</div>
+      <h2>홍보·안내문 AI로 만들기</h2>
+      <p class="part-desc">JBGPT · 미리캔버스 · ChatGPT · NotebookLM</p>
+    </section>
+
+    <!-- 슬라이드 22: 파트 2 목표 -->
+    <section>
+      <div class="part-badge">파트 2</div>
+      <div class="slide-title">🎯 오늘 파트 2에서 만들 것</div>
+      <div class="card blue seq" style="text-align:center; padding:20px;">
+        <div style="font-size:2em; margin-bottom:10px;">📄</div>
+        <strong class="t-main" style="font-size:1em;">학부모 대상 교육복지 서비스 안내문</strong>
+        <p style="margin-top:8px;">JBGPT로 초안을 작성하고<br>미리캔버스로 예쁘게 디자인해서 완성합니다</p>
+      </div>
+      <div class="flow-wrap seq" style="margin-top:14px;">
+        <div class="flow-item">🤖 JBGPT<br><small>안내문 초안 작성</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item mint">🖼️ 미리캔버스<br><small>디자인 완성</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item amber">📥 다운로드<br><small>결과물 저장</small></div>
+      </div>
+      <div class="hbox amber seq" style="margin-top:10px;">
+        🎯 수업이 끝나면 <span class="t-amber">완성된 안내문 1장</span>을 직접 가져가요!
+      </div>
+    </section>
+
+    <!-- 슬라이드 23: JBGPT 소개 -->
+    <section>
+      <div class="part-badge">파트 2 · JBGPT</div>
+      <div class="slide-title">🤖 JBGPT — 전북 교육 AI</div>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card blue">
+            <strong>JBGPT가 뭔가요?</strong>
+            <p style="margin-top:4px;">전북 교육청에서 만든 AI 도구예요.<br>
+            교육 업무에 특화되어 있고 보안이 안전해요!</p>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 보안 안전</strong>
+              <p style="margin-top:4px;">교육청 내부망 기반으로 자료가 외부에 유출되지 않아요</p>
+            </div>
+            <div class="card mint">
+              <strong>✅ 교육 특화</strong>
+              <p style="margin-top:4px;">교육 현장에 맞는 문서 작성에 최적화되어 있어요</p>
+            </div>
+          </div>
+          <div class="hbox blue" style="margin-top:8px;">
+            💡 ChatGPT와 비슷하지만 <span class="t-main">교육청 계정으로 접속</span>하고 <span class="t-main">보안이 더 안전</span>해요!
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>JBGPT 메인 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 24: 프롬프트 잘 쓰는 법 -->
+    <section>
+      <div class="part-badge">파트 2 · JBGPT</div>
+      <div class="slide-title">✍️ 프롬프트 잘 쓰는 법</div>
+      <div class="hbox blue" style="margin-bottom:10px;">
+        💡 <strong>프롬프트</strong>란? AI에게 내가 원하는 것을 설명하는 글이에요.<br>
+        구체적으로 쓸수록 결과물이 훨씬 좋아집니다!
+      </div>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon">1</div>
+          <div class="list-body">
+            <strong>구체적으로 말하기</strong>
+            <span>❌ "안내문 써줘" &nbsp;→&nbsp; ✅ "초등학교 학부모 대상 교육복지 안내문을 A4 1장, 친근한 말투로 써줘"</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">2</div>
+          <div class="list-body">
+            <strong>역할 부여하기</strong>
+            <span>✅ "너는 10년 경력의 교육복지사야. 학부모에게 보내는 안내문을 써줘"</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">3</div>
+          <div class="list-body">
+            <strong>형식 지정하기</strong>
+            <span>✅ "제목, 인사말, 내용, 문의처 순서로 써줘"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 25: JBGPT 안내문 작성 -->
+    <section>
+      <div class="part-badge">파트 2 · JBGPT</div>
+      <div class="slide-title">🤖 STEP 1 — JBGPT로 안내문 초안 작성</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num">1</div>
+                <span class="acc-label">JBGPT 접속 후 로그인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">교육청 계정으로 JBGPT에 로그인해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">2</div>
+                <span class="acc-label">아래 프롬프트 입력하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">
+                "우리 학교 교육복지 서비스를 학부모에게 안내하는 가정통신문을 작성해줘.
+                대상: 초등학교 학부모 / 내용: 학습지원, 정서지원, 문화체험, 급식비 지원 /
+                분량: A4 1장 / 말투: 친근하고 따뜻한 말투 / 형식: 제목, 인사말, 내용, 문의처 포함"
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">3</div>
+                <span class="acc-label">결과물 검토 후 복사</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">AI가 만든 내용을 꼼꼼히 확인하고 필요하면 수정 요청 후 복사해요</div>
+            </div>
+          </div>
+          <div class="hbox danger" style="margin-top:8px;">
+            ⚠️ AI 결과물은 반드시 검토 후 사용하세요! 사실 확인이 필요해요.
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>JBGPT 프롬프트 입력 + 결과 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 26: 미리캔버스 소개 -->
+    <section>
+      <div class="part-badge mint">파트 2 · 미리캔버스</div>
+      <div class="slide-title">🖼️ 미리캔버스 — AI 디자인 도구</div>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card mint">
+            <strong>미리캔버스가 뭔가요?</strong>
+            <p style="margin-top:4px;">한국형 AI 디자인 도구예요.<br>
+            템플릿을 골라서 내용만 바꾸면 예쁜 안내문을 만들 수 있어요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://miricanvas.com" target="_blank">
+              🌐 miricanvas.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료 플랜</strong>
+              <p style="margin-top:4px;">기본 템플릿 무료 사용 가능</p>
+            </div>
+            <div class="card mint">
+              <strong>✅ 한국어 특화</strong>
+              <p style="margin-top:4px;">한글 폰트·한국형 디자인 풍부</p>
+            </div>
+          </div>
+          <div class="hbox mint" style="margin-top:8px;">
+            💡 회원가입 완료 상태인지 확인해주세요!
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>미리캔버스 메인 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 27: 미리캔버스 템플릿 선택 -->
+    <section>
+      <div class="part-badge mint">파트 2 · 미리캔버스</div>
+      <div class="slide-title">🖼️ STEP 2 — 템플릿 선택하기</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">미리캔버스 접속 후 로그인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">miricanvas.com 접속 → 구글 계정으로 로그인해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">새 디자인 만들기 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">메인 화면에서 "새 디자인 만들기" 버튼을 클릭해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">3</div>
+                <span class="acc-label">"자기소개" 또는 "안내문" 검색</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">검색창에 "안내문" 또는 "가정통신문"을 입력해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">4</div>
+                <span class="acc-label">무료 템플릿 선택</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">🆓 표시가 있는 템플릿만 선택해요. "이 템플릿 사용하기" 클릭!</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>미리캔버스 템플릿 선택 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 28: 미리캔버스 내용 편집 -->
+    <section>
+      <div class="part-badge mint">파트 2 · 미리캔버스</div>
+      <div class="slide-title">🖼️ STEP 3 — JBGPT 내용 붙여넣고 편집하기</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">텍스트 클릭 후 내용 바꾸기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">글자를 클릭하면 수정할 수 있어요. JBGPT에서 복사한 내용을 붙여넣어요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">AI 이미지 기능 활용</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">왼쪽 메뉴 → "AI 이미지" → 원하는 그림 설명 입력 → 생성된 이미지 삽입</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">3</div>
+                <span class="acc-label">폰트·색상 조정</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">상단 메뉴에서 폰트 종류, 크기, 색상을 원하는 대로 바꿔요</div>
+            </div>
+          </div>
+          <div class="hbox blue" style="margin-top:8px;">
+            💡 AI 이미지 입력 예시: "따뜻한 가족, 학교 교실, 선생님과 학생"
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>미리캔버스 편집 + AI 이미지 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 29: 미리캔버스 완성 -->
+    <section>
+      <div class="part-badge mint">파트 2 · 미리캔버스</div>
+      <div class="slide-title">🖼️ STEP 4 — 완성 및 다운로드</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num mint">1</div>
+                <span class="acc-label">전체 디자인 확인하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">완성된 안내문을 전체적으로 살펴보고 어색한 부분을 수정해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num mint">2</div>
+                <span class="acc-label">다운로드 버튼 클릭</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">우측 상단 "다운로드" → PNG 또는 PDF 선택 → 저장</div>
+            </div>
+          </div>
+          <div class="hbox mint" style="margin-top:10px;">
+            🎉 <span class="t-mint">완성!</span> 오늘 만든 안내문을 실제 업무에 바로 활용할 수 있어요.
+          </div>
+          <div class="hbox amber" style="margin-top:6px;">
+            🔗 <span class="t-amber">기획은 JBGPT, 디자인은 미리캔버스!</span><br>
+            두 도구를 연결하면 업무 효율이 확 올라가요.
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>완성된 안내문 + 다운로드 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 30: ChatGPT / NotebookLM 시연 -->
+    <section>
+      <div class="part-badge">파트 2 · 보너스</div>
+      <div class="slide-title">💬 이런 도구도 있어요 — 시연으로 확인!</div>
+      <div class="two-col seq">
+        <div class="card blue">
+          <div style="font-size:1.6em; margin-bottom:8px;">💬</div>
+          <strong class="t-main">ChatGPT</strong>
+          <p style="margin-top:6px;">JBGPT와 비슷한 AI 대화 도구예요.<br>
+          안내문, 공문 초안 작성에 활용할 수 있어요.</p>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://chatgpt.com" target="_blank">🌐 chatgpt.com</a>
+          </div>
+        </div>
+        <div class="card mint">
+          <div style="font-size:1.6em; margin-bottom:8px;">📖</div>
+          <strong class="t-mint">NotebookLM</strong>
+          <p style="margin-top:6px;">자료를 올리면 AI가 읽고 요약해줘요.<br>
+          팟캐스트처럼 음성으로 요약도 들을 수 있어요!</p>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://notebooklm.google.com" target="_blank">🌐 notebooklm.google.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="hbox blue seq" style="margin-top:10px;">
+        👀 지금은 선생님 화면으로 시연만 보여드릴게요. 나중에 직접 써보세요!
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!--        파트 3          -->
+    <!-- ===================== -->
+
+    <!-- 슬라이드 31: 파트 3 표지 -->
+    <section class="cover-part">
+      <div class="part-num">🎙️ 파트 3</div>
+      <h2>행정업무 효율화</h2>
+      <p class="part-desc">클로바노트 · JBGPT</p>
+    </section>
+
+    <!-- 슬라이드 32: 클로바노트 소개 -->
+    <section>
+      <div class="part-badge">파트 3 · 클로바노트</div>
+      <div class="slide-title">🎙️ 클로바노트 — AI 회의록 작성</div>
+      <div class="practice-layout">
+        <div class="practice-left seq">
+          <div class="card blue">
+            <strong>클로바노트가 뭔가요?</strong>
+            <p style="margin-top:4px;">네이버가 만든 AI 음성 기록 도구예요.<br>
+            녹음하면 AI가 자동으로 텍스트로 변환해줘요!</p>
+          </div>
+          <div class="url-box" style="margin-top:8px;">
+            <a href="https://clovanote.naver.com" target="_blank">
+              🌐 clovanote.naver.com
+            </a>
+          </div>
+          <div class="two-col" style="margin-top:8px;">
+            <div class="card blue">
+              <strong>✅ 무료</strong>
+              <p style="margin-top:4px;">네이버 계정으로 무료 사용</p>
+            </div>
+            <div class="card mint">
+              <strong>🎯 활용</strong>
+              <p style="margin-top:4px;">회의록, 상담 기록, 강의 정리</p>
+            </div>
+          </div>
+          <div class="hbox blue" style="margin-top:8px;">
+            💡 오늘 강의 내용을 <span class="t-main">지금 이 순간에도 녹음 중</span>이에요! 파트 3에서 확인해봐요.
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>클로바노트 메인 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 33: 클로바노트 활용 사례 -->
+    <section>
+      <div class="part-badge">파트 3 · 클로바노트</div>
+      <div class="slide-title">🎙️ 클로바노트 — 이렇게 활용해요</div>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon">📋</div>
+          <div class="list-body">
+            <strong>회의록 자동 작성</strong>
+            <span>회의 중 녹음 → AI가 텍스트로 변환 → 회의록 초안 완성</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon mint">👤</div>
+          <div class="list-body">
+            <strong>상담 내용 기록</strong>
+            <span>학생·학부모 상담 녹음 → AI 요약 → 사례관리 기록 활용</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon amber">🎓</div>
+          <div class="list-body">
+            <strong>강의·연수 내용 정리</strong>
+            <span>강의 녹음 → AI 텍스트 변환 → JBGPT로 정리 → 연수 자료 완성</span>
+          </div>
+        </div>
+      </div>
+      <div class="hbox amber" style="margin-top:8px;">
+        🎯 오늘 강의도 녹음 중이에요! 잠시 후 실시간으로 확인해봐요.
+      </div>
+    </section>
+
+    <!-- 슬라이드 34: 클로바노트 실습 -->
+    <section>
+      <div class="part-badge">파트 3 · 클로바노트</div>
+      <div class="slide-title">🎙️ STEP 1~2 — 접속 및 녹음 확인</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num">1</div>
+                <span class="acc-label">클로바노트 접속 후 로그인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">clovanote.naver.com 접속 → 네이버 계정으로 로그인해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">2</div>
+                <span class="acc-label">오늘 강의 녹음 파일 확인</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">강사 화면에서 오늘 강의가 텍스트로 변환된 것을 실시간으로 확인해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">3</div>
+                <span class="acc-label">AI 요약 기능 사용</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">클로바노트 AI 요약 버튼을 클릭하면 핵심 내용을 자동으로 정리해줘요</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>클로바노트 녹음 + 텍스트 변환 화면<br>(실시간 확인)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- 슬라이드 35: JBGPT로 회의록 정리 -->
+    <section>
+      <div class="part-badge">파트 3 · JBGPT 연계</div>
+      <div class="slide-title">🤖 STEP 3 — JBGPT로 회의록 형식으로 정리</div>
+      <div class="practice-layout">
+        <div class="practice-left">
+          <div class="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn">
+                <div class="acc-num">1</div>
+                <span class="acc-label">클로바노트 텍스트 복사</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">클로바노트에서 변환된 텍스트를 전체 복사해요</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">2</div>
+                <span class="acc-label">JBGPT에 붙여넣고 요청하기</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">"아래 내용을 회의록 형식으로 정리해줘. 일시, 참석자, 주요 내용, 결정사항 순서로" 입력 후 텍스트 붙여넣기</div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn">
+                <div class="acc-num">3</div>
+                <span class="acc-label">결과물 검토 후 저장</span>
+                <span class="acc-arrow">▼</span>
+              </button>
+              <div class="acc-body">AI가 정리한 회의록을 검토하고 수정 후 복사해서 문서로 저장해요</div>
+            </div>
+          </div>
+          <div class="hbox amber" style="margin-top:8px;">
+            🔗 <span class="t-amber">클로바노트 → JBGPT 연결!</span><br>
+            녹음 → 텍스트 변환 → AI 정리까지 자동화할 수 있어요.
+          </div>
+        </div>
+        <div class="practice-right">
+          <div class="img-box">
+            <div class="ib-icon">🖼️</div>
+            <span>JBGPT 회의록 정리 결과 화면</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 36: 파트 3 마무리 -->
+    <section>
+      <div class="part-badge">파트 3 마무리</div>
+      <div class="slide-title">🎉 파트 3 — 행정업무 효율화 정리</div>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon" style="font-size:1em;">🎙️</div>
+          <div class="list-body">
+            <strong>클로바노트</strong>
+            <span>회의·상담·강의 녹음 → AI가 자동으로 텍스트 변환</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="font-size:1em;">🤖</div>
+          <div class="list-body">
+            <strong>JBGPT 연계</strong>
+            <span>클로바노트 텍스트 → JBGPT로 회의록 형식 정리 완성</span>
+          </div>
+        </div>
+      </div>
+      <div class="hbox blue" style="margin-top:10px;">
+        💡 <strong>오늘 배운 전체 흐름</strong><br>
+        녹음 → 텍스트 변환 → AI 정리 → 문서 완성<br>
+        이 흐름이 익숙해지면 회의록 작성 시간이 <span class="t-main">절반 이하</span>로 줄어들어요!
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!--        마무리          -->
+    <!-- ===================== -->
+
+    <!-- 슬라이드 37: 전체 정리 -->
+    <section>
+      <div class="part-badge amber">마무리</div>
+      <div class="slide-title">📋 오늘 배운 것 한눈에 정리</div>
+      <div class="three-col seq">
+        <div class="card blue" style="text-align:center; padding:14px 10px;">
+          <div style="font-size:1.4em; margin-bottom:6px;">🎮</div>
+          <strong class="t-main">파트 1</strong>
+          <p style="margin-top:6px;">학생과 함께하는 AI<br>
+          Quick, Draw! · AutoDraw<br>킹수학 · Suno AI</p>
+        </div>
+        <div class="card mint" style="text-align:center; padding:14px 10px;">
+          <div style="font-size:1.4em; margin-bottom:6px;">🖼️</div>
+          <strong class="t-mint">파트 2</strong>
+          <p style="margin-top:6px;">홍보·안내문 만들기<br>
+          JBGPT → 미리캔버스<br>ChatGPT · NotebookLM</p>
+        </div>
+        <div class="card amber" style="text-align:center; padding:14px 10px;">
+          <div style="font-size:1.4em; margin-bottom:6px;">🎙️</div>
+          <strong class="t-amber">파트 3</strong>
+          <p style="margin-top:6px;">행정업무 효율화<br>
+          클로바노트 → JBGPT<br>회의록 자동 작성</p>
+        </div>
+      </div>
+      <div class="hbox blue seq" style="margin-top:10px;">
+        💡 <span class="t-main">AI는 도구입니다.</span>
+        오늘 배운 것을 자주 써볼수록 더 많은 것을 할 수 있어요!
+      </div>
+      <div class="flow-wrap seq">
+        <div class="flow-item">🎮 Quick, Draw!</div>
+        <div class="flow-item">🎨 AutoDraw</div>
+        <div class="flow-item">📐 킹수학</div>
+        <div class="flow-item amber">🎵 Suno AI</div>
+        <div class="flow-item">🤖 JBGPT</div>
+        <div class="flow-item mint">🖼️ 미리캔버스</div>
+        <div class="flow-item">🎙️ 클로바노트</div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 38: 마무리 + Q&A -->
+    <section class="cover-end">
+      <h2>🌟 수고하셨습니다!</h2>
+      <p style="margin-top:16px; font-size:0.9em;">
+        오늘 배운 AI 도구들을 현장에서 바로 활용해보세요.<br>
+        쓸수록 더 쉬워지고, 더 많은 것이 가능해집니다.
+      </p>
+      <div style="margin-top:24px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🎮 Quick, Draw!
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🎨 AutoDraw
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          📐 킹수학
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🎵 Suno AI
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🤖 JBGPT
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🖼️ 미리캔버스
+        </div>
+        <div style="background:rgba(255,255,255,0.2); border-radius:10px; padding:10px 20px; color:white; font-size:0.8em;">
+          🎙️ 클로바노트
+        </div>
+      </div>
+      <p style="margin-top:24px; font-size:0.8em; color:rgba(255,255,255,0.75);">
+        💬 질문이 있으신 분은 편하게 말씀해 주세요!
+      </p>
+    </section>
 
   </div>
 </div>
@@ -1325,25 +1895,33 @@
     controls: true,
     progress: true,
     slideNumber: 'c/t',
+    width: 1280,
+    height: 720,
   });
-    // 클릭 시 active 클래스 토글
-  document.addEventListener('click', function(e) {
-    const targets = [
-      '.list-item',
-      '.step-box',
-      '.tool-card',
-      '.card'
-    ];
 
+  // ── 아코디언 ──
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const item = btn.closest('.acc-item');
+      const isOpen = item.classList.contains('open');
+      item.closest('.accordion').querySelectorAll('.acc-item').forEach(i => {
+        i.classList.remove('open');
+      });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── 클릭 active 토글 ──
+  document.addEventListener('click', function(e) {
+    const targets = ['.list-item', '.tool-card', '.card'];
     targets.forEach(selector => {
       const el = e.target.closest(selector);
       if (el) {
-        // 같은 슬라이드 내 같은 타입 요소들의 active 해제
         const section = el.closest('section');
         section.querySelectorAll(selector).forEach(item => {
           if (item !== el) item.classList.remove('active');
         });
-        // 클릭한 요소 토글
         el.classList.toggle('active');
       }
     });
