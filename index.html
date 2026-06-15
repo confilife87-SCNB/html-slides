@@ -6,183 +6,219 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
   <style>
-    /* ── 전역 변수 ── */
+
+    /* ════════════════════════
+       1. 전역 변수
+    ════════════════════════ */
     :root {
-      --main:    #6C8EBF;
-      --sub:     #7EC8C8;
-      --accent:  #F0A500;
-      --bg:      #F8F9FF;
-      --bg-soft: #F0F7F7;
-      --text:    #2D3748;
+      --main:       #6C8EBF;
+      --sub:        #7EC8C8;
+      --accent:     #F0A500;
+      --danger:     #E53E3E;
+      --bg:         #F8F9FF;
+      --bg-soft:    #F0F7F7;
+      --white:      #FFFFFF;
+      --text:       #2D3748;
       --text-light: #718096;
-      --white:   #FFFFFF;
-      --shadow:  0 4px 16px rgba(108,142,191,0.15);
+      --border:     #E2E8F0;
+      --shadow:     0 4px 16px rgba(108,142,191,0.15);
+      --radius:     10px;
     }
 
-    /* ── 기본 폰트 ── */
+    /* ════════════════════════
+       2. 기본 설정
+    ════════════════════════ */
     .reveal {
       font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
       background: var(--bg);
     }
 
-    /* ── 전역 텍스트 ── */
-    .reveal p, .reveal li, .reveal span, .reveal td {
-      font-size: 0.82em;
-      line-height: 1.5;
-      color: var(--text);
-      word-break: keep-all;
-      word-wrap: break-word;
-    }
-
-    /* ── 슬라이드 기본 ── */
     .reveal .slides section {
+      width: 100%;
       height: 100%;
       box-sizing: border-box;
       display: flex !important;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 48px;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding: 20px 32px 16px 32px;
       overflow: hidden;
-    }
-    .reveal .slides section > * {
-      width: 100%;
+      text-align: left;
     }
 
-    /* ── 제목 스타일 ── */
-    .reveal h1, .reveal h2, .reveal h3 {
+    /* ════════════════════════
+       3. 타이포그래피
+    ════════════════════════ */
+    .reveal h1, .reveal h2, .reveal h3,
+    .reveal p, .reveal li, .reveal span, .reveal td {
       word-break: keep-all;
       word-wrap: break-word;
+      text-align: left;
     }
-    .reveal h2 {
-      font-size: 1.2em;
+
+    /* 슬라이드 제목 */
+    .slide-title {
+      font-size: 1.15em;
       font-weight: 700;
       color: var(--main);
       border-bottom: 3px solid var(--main);
       padding-bottom: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    /* 본문 */
+    .reveal p, .reveal li, .reveal span {
+      font-size: 0.82em;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+      word-break: keep-all;
     }
 
     /* ════════════════════════
-       표지 슬라이드
+       4. 파트 뱃지
     ════════════════════════ */
+    .part-badge {
+      display: inline-block;
+      background: var(--main);
+      color: var(--white);
+      font-size: 0.62em;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      letter-spacing: 0.3px;
+    }
+    .part-badge.mint   { background: var(--sub); }
+    .part-badge.amber  { background: var(--accent); }
+    .part-badge.danger { background: var(--danger); }
+
+    /* ════════════════════════
+       5. 표지 슬라이드
+    ════════════════════════ */
+
+    /* 메인 표지 */
     .cover-main {
       background: linear-gradient(135deg, #6C8EBF 0%, #4A6FA5 100%) !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    .cover-main .cover-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 30px;
+      padding: 5px 18px;
+      font-size: 0.75em;
+      color: var(--white);
+      margin-bottom: 14px;
     }
     .cover-main h1 {
       font-size: 2em;
       font-weight: 800;
-      color: var(--white);
       line-height: 1.3;
-      word-break: keep-all;
-      background: linear-gradient(90deg, #fff 0%, #ffe9a0 40%, #fff 60%, #fff 100%);
+      background: linear-gradient(
+        90deg, #fff 0%, #ffe9a0 45%, #fff 55%, #fff 100%
+      );
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 3s linear infinite;
+      margin: 0 0 12px 0;
+      text-align: center;
     }
-    .cover-main p {
-      color: rgba(255,255,255,0.85) !important;
-      font-size: 0.95em !important;
-      margin-top: 12px;
+    .cover-main .cover-sub {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88em;
+      text-align: center;
+      margin: 0 0 6px 0;
     }
-    .cover-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      border: 1.5px solid rgba(255,255,255,0.5);
-      border-radius: 30px;
-      padding: 6px 20px;
-      font-size: 0.8em;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .cover-date {
-      margin-top: 24px;
-      font-size: 0.78em !important;
-      color: rgba(255,255,255,0.7) !important;
+    .cover-main .cover-date {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.76em;
+      text-align: center;
+      margin: 0;
     }
 
-    /* ── 파트 표지 ── */
+    /* 파트 표지 */
     .cover-part {
       background: linear-gradient(135deg, #7EC8C8 0%, #5BA8A8 100%) !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    .cover-part .part-num {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      border-radius: 30px;
+      padding: 4px 16px;
+      font-size: 0.72em;
+      color: var(--white);
+      margin-bottom: 10px;
     }
     .cover-part h2 {
       font-size: 1.6em;
       font-weight: 800;
       color: var(--white) !important;
-      border-bottom: 3px solid rgba(255,255,255,0.4) !important;
+      border: none !important;
+      margin: 0 0 10px 0;
+      text-align: center;
     }
-    .cover-part p {
-      color: rgba(255,255,255,0.9) !important;
-      font-size: 0.95em !important;
-    }
-    .part-number {
-      display: inline-block;
-      background: rgba(255,255,255,0.25);
-      border-radius: 30px;
-      padding: 5px 18px;
-      font-size: 0.78em;
-      color: var(--white);
-      margin-bottom: 12px;
+    .cover-part .part-desc {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.85em;
+      text-align: center;
     }
 
     /* ════════════════════════
-       공통 컴포넌트
+       6. 카드 컴포넌트
     ════════════════════════ */
-
-    /* ── 파트 뱃지 (상단) ── */
-    .part-badge {
-      position: absolute;
-      top: 14px;
-      left: 48px;
-      background: var(--main);
-      color: white;
-      font-size: 0.65em;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-    .part-badge.mint { background: var(--sub); }
-    .part-badge.amber { background: var(--accent); }
-
-    /* ── 카드 ── */
     .card {
       background: var(--white);
-      border-radius: 12px;
-      border: 1.5px solid #E2E8F0;
-      padding: 14px 18px;
-      margin: 6px 0;
-      transition: all 0.25s ease;
-      animation: fadeInUp 0.5s ease both;
-      word-break: keep-all;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 12px 16px;
+      margin: 5px 0;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow);
       border-color: var(--main);
     }
-    .card.mint { border-left: 4px solid var(--sub); }
-    .card.blue { border-left: 4px solid var(--main); }
-    .card.amber { border-left: 4px solid var(--accent); }
+    .card.blue   { border-left: 4px solid var(--main); }
+    .card.mint   { border-left: 4px solid var(--sub); }
+    .card.amber  { border-left: 4px solid var(--accent); }
+    .card.danger { border-left: 4px solid var(--danger); }
 
-    /* ── STEP 박스 ── */
+    /* ════════════════════════
+       7. STEP 박스
+    ════════════════════════ */
+    .step-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 6px 0;
+    }
     .step-box {
       display: flex;
       align-items: flex-start;
       background: var(--white);
-      border: 1.5px solid #E2E8F0;
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin: 5px 0;
-      transition: all 0.25s ease;
-      animation: fadeInUp 0.5s ease both;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 9px 14px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
     }
-    .step-box:nth-child(1) { animation-delay: 0.1s; }
-    .step-box:nth-child(2) { animation-delay: 0.25s; }
-    .step-box:nth-child(3) { animation-delay: 0.4s; }
-    .step-box:nth-child(4) { animation-delay: 0.55s; }
     .step-box:hover {
       transform: translateX(6px);
       border-color: var(--main);
@@ -190,135 +226,121 @@
       box-shadow: var(--shadow);
     }
     .step-box:hover .step-num {
-      transform: rotate(10deg) scale(1.1);
+      transform: scale(1.12);
     }
     .step-num {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      max-width: 36px;
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
       border-radius: 50%;
       background: var(--main);
-      color: white;
+      color: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1rem;
-      margin-right: 14px;
+      font-size: 0.95rem;
+      margin-right: 12px;
       flex-shrink: 0;
-      transition: transform 0.3s ease;
+      transition: transform 0.22s ease;
     }
-    .step-num.mint  { background: var(--sub); }
-    .step-num.amber { background: var(--accent); }
+    .step-num.mint   { background: var(--sub); }
+    .step-num.amber  { background: var(--accent); }
+    .step-num.danger { background: var(--danger); }
     .step-content {
       flex: 1;
       min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
     }
     .step-content strong {
-      font-size: 0.88em;
-      color: var(--text);
+      display: block;
+      font-size: 0.86em;
       font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
       word-break: keep-all;
-      line-height: 1.3;
+      margin-bottom: 2px;
     }
     .step-content span {
       font-size: 0.76em;
       color: var(--text-light);
-      word-break: keep-all;
       line-height: 1.4;
+      word-break: keep-all;
     }
 
-    /* ── URL 박스 ── */
+    /* ════════════════════════
+       8. 하이라이트 박스
+    ════════════════════════ */
+    .hbox {
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      margin: 5px 0;
+      font-size: 0.8em;
+      line-height: 1.5;
+      word-break: keep-all;
+      color: var(--text);
+    }
+    .hbox.blue   { background: #EBF4FF; border: 1.5px solid var(--main); }
+    .hbox.mint   { background: #E6F7F7; border: 1.5px solid var(--sub); }
+    .hbox.amber  { background: #FEF3DC; border: 1.5px solid var(--accent); }
+    .hbox.danger { background: #FFF0F0; border: 1.5px solid var(--danger); }
+
+    /* ════════════════════════
+       9. URL 박스
+    ════════════════════════ */
     .url-box {
       background: #EBF4FF;
       border: 2px dashed var(--main);
-      border-radius: 8px;
-      padding: 8px 16px;
-      margin: 8px 0;
+      border-radius: var(--radius);
+      padding: 7px 16px;
+      margin: 6px 0;
       text-align: center;
-      transition: all 0.25s ease;
+      transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
       cursor: pointer;
     }
     .url-box:hover {
       background: #D6E8FF;
-      transform: scale(1.02);
+      transform: scale(1.015);
       box-shadow: var(--shadow);
     }
     .url-box a {
       color: var(--main);
       font-weight: 700;
-      font-size: 0.85em;
+      font-size: 0.84em;
       text-decoration: none;
     }
 
-    /* ── 하이라이트 박스 ── */
-    .hbox {
-      border-radius: 8px;
-      padding: 8px 14px;
-      margin: 6px 0;
-      font-size: 0.8em;
-      word-break: keep-all;
-      animation: fadeInUp 0.6s ease 0.3s both;
-    }
-    .hbox.blue  { background: #EBF4FF; border: 1.5px solid var(--main); }
-    .hbox.mint  { background: #E6F7F7; border: 1.5px solid var(--sub); }
-    .hbox.amber { background: #FEF3DC; border: 1.5px solid var(--accent); }
-    .hbox.red   { background: #FFF0F0; border: 1.5px solid #E53E3E; }
-
-    /* ── 2단 그리드 ── */
+    /* ════════════════════════
+       10. 2단 그리드
+    ════════════════════════ */
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 8px 0;
-    }
-
-    /* ── 흐름 박스 ── */
-    .flow-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
-      margin: 10px 0;
+      margin: 6px 0;
     }
-    .flow-item {
-      background: var(--main);
-      color: white;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 0.76em;
-      font-weight: 600;
-      text-align: center;
-      transition: all 0.25s ease;
-      word-break: keep-all;
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
     }
-    .flow-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-    .flow-item.mint  { background: var(--sub); }
-    .flow-item.amber { background: var(--accent); }
-    .flow-arrow { font-size: 1.2em; color: #CBD5E0; }
 
-    /* ── 도구 소개 카드 ── */
+    /* ════════════════════════
+       11. 도구 카드 그리드
+    ════════════════════════ */
     .tool-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 10px 0;
+      gap: 8px;
+      margin: 8px 0;
     }
     .tool-card {
       background: var(--white);
-      border-radius: 10px;
-      border: 1.5px solid #E2E8F0;
-      padding: 12px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 10px 8px;
       text-align: center;
-      transition: all 0.25s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
       cursor: default;
     }
     .tool-card:hover {
@@ -326,48 +348,46 @@
       box-shadow: var(--shadow);
       border-color: var(--main);
     }
-    .tool-card .icon { font-size: 1.6em; margin-bottom: 6px; }
-    .tool-card .name {
-      font-size: 0.78em;
+    .tool-card .tc-icon { font-size: 1.5em; margin-bottom: 4px; }
+    .tool-card .tc-name {
+      font-size: 0.76em;
       font-weight: 700;
       color: var(--main);
       word-break: keep-all;
     }
-    .tool-card .desc {
-      font-size: 0.7em;
+    .tool-card .tc-desc {
+      font-size: 0.68em;
       color: var(--text-light);
-      margin-top: 4px;
+      margin-top: 3px;
       word-break: keep-all;
     }
 
-    /* ── 마인드셋 카드 ── */
-    .mindset-box {
+    /* ════════════════════════
+       12. 마인드셋 / 체크 아이템
+    ════════════════════════ */
+    .list-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
       background: var(--white);
-      border-radius: 10px;
-      border: 1.5px solid #E2E8F0;
-      padding: 10px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 9px 14px;
       margin: 5px 0;
-      transition: all 0.25s ease;
-      animation: fadeInUp 0.5s ease both;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
-    .mindset-box:nth-child(1) { animation-delay: 0.1s; }
-    .mindset-box:nth-child(2) { animation-delay: 0.25s; }
-    .mindset-box:nth-child(3) { animation-delay: 0.4s; }
-    .mindset-box:hover {
-      transform: translateX(6px);
-      border-color: var(--accent);
+    .list-item:hover {
+      transform: translateX(5px);
+      border-color: var(--main);
       box-shadow: var(--shadow);
     }
-    .mindset-num {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
+    .list-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
       border-radius: 50%;
-      background: var(--accent);
-      color: white;
+      background: var(--main);
+      color: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -375,275 +395,324 @@
       font-size: 0.9rem;
       flex-shrink: 0;
     }
-    .mindset-text strong {
+    .list-icon.mint   { background: var(--sub); }
+    .list-icon.amber  { background: var(--accent); }
+    .list-icon.danger { background: var(--danger); }
+    .list-icon.emoji  { background: transparent; font-size: 1.3em; }
+    .list-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .list-body strong {
       display: block;
-      font-size: 0.85em;
+      font-size: 0.86em;
+      font-weight: 700;
       color: var(--text);
       word-break: keep-all;
+      margin-bottom: 2px;
     }
-    .mindset-text span {
-      font-size: 0.74em;
+    .list-body span {
+      font-size: 0.76em;
       color: var(--text-light);
       word-break: keep-all;
+      line-height: 1.4;
     }
 
-    /* ── 이미지 placeholder ── */
-    .img-placeholder {
+    /* ════════════════════════
+       13. 이미지 placeholder
+    ════════════════════════ */
+    .img-box {
       background: #EDF2F7;
       border: 2px dashed #CBD5E0;
-      border-radius: 10px;
+      border-radius: var(--radius);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       color: #A0AEC0;
-      font-size: 0.8em;
-      padding: 20px;
-      margin: 8px 0;
-      min-height: 160px;
+      font-size: 0.78em;
+      padding: 16px;
+      margin: 6px 0;
       word-break: keep-all;
+      text-align: center;
     }
-    .img-placeholder .ph-icon { font-size: 2em; margin-bottom: 8px; }
-
-    /* ── 진행바 ── */
-    .progress-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--main), var(--sub));
-      border-radius: 0 2px 0 0;
-      transition: width 0.3s ease;
-    }
-
-    /* ── 슬라이드 번호 커스텀 ── */
-    .reveal .slide-number {
-      background: transparent;
-      color: var(--text-light);
-      font-size: 0.7em;
+    .img-box .ib-icon { font-size: 2em; margin-bottom: 6px; }
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     /* ════════════════════════
-       키프레임
+       14. 흐름 표시
+    ════════════════════════ */
+    .flow-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+    .flow-item {
+      background: var(--main);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.76em;
+      font-weight: 600;
+      text-align: center;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      word-break: keep-all;
+    }
+    .flow-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .flow-item.mint  { background: var(--sub); }
+    .flow-item.amber { background: var(--accent); }
+    .flow-arrow { font-size: 1.1em; color: #CBD5E0; }
+
+    /* ════════════════════════
+       15. 마무리 / 엔딩
+    ════════════════════════ */
+    .cover-end {
+      background: linear-gradient(135deg, #F0A500 0%, #c97f00 100%) !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    .cover-end h2 {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: var(--white) !important;
+      border: none !important;
+      text-align: center;
+    }
+    .cover-end p {
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+    }
+
+    /* ════════════════════════
+       16. 강조 텍스트
+    ════════════════════════ */
+    .t-main   { color: var(--main);   font-weight: 700; }
+    .t-mint   { color: var(--sub);    font-weight: 700; }
+    .t-amber  { color: var(--accent); font-weight: 700; }
+    .t-danger { color: var(--danger); font-weight: 700; }
+
+    /* ════════════════════════
+       17. 애니메이션
     ════════════════════════ */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes shimmer {
       0%   { background-position: -200% center; }
       100% { background-position:  200% center; }
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50%       { transform: scale(1.04); }
-    }
 
-    /* ── 강조 텍스트 ── */
-    .accent { color: var(--accent); font-weight: 700; }
-    .main-color { color: var(--main); font-weight: 700; }
-    .mint-color { color: var(--sub); font-weight: 700; }
+    /* 순차 등장 */
+    .seq > * {
+      opacity: 0;
+      animation: fadeInUp 0.45s ease forwards;
+    }
+    .seq > *:nth-child(1) { animation-delay: 0.05s; }
+    .seq > *:nth-child(2) { animation-delay: 0.18s; }
+    .seq > *:nth-child(3) { animation-delay: 0.31s; }
+    .seq > *:nth-child(4) { animation-delay: 0.44s; }
+    .seq > *:nth-child(5) { animation-delay: 0.57s; }
+    .seq > *:nth-child(6) { animation-delay: 0.70s; }
 
-    /* ── 사전준비 체크 ── */
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--white);
-      border-radius: 10px;
-      border: 1.5px solid #E2E8F0;
-      padding: 10px 16px;
-      margin: 5px 0;
-      animation: fadeInUp 0.5s ease both;
-    }
-    .check-item:nth-child(1) { animation-delay: 0.1s; }
-    .check-item:nth-child(2) { animation-delay: 0.25s; }
-    .check-item:nth-child(3) { animation-delay: 0.4s; }
-    .check-item:nth-child(4) { animation-delay: 0.55s; }
-    .check-item:hover {
-      border-color: var(--sub);
-      box-shadow: var(--shadow);
-    }
-    .check-icon {
-      font-size: 1.3em;
-      flex-shrink: 0;
-    }
-    .check-text strong {
-      display: block;
-      font-size: 0.85em;
-      color: var(--text);
-      word-break: keep-all;
-    }
-    .check-text span {
-      font-size: 0.74em;
+    /* ════════════════════════
+       18. 슬라이드 번호
+    ════════════════════════ */
+    .reveal .slide-number {
+      background: transparent;
       color: var(--text-light);
-      word-break: keep-all;
+      font-size: 0.68em;
+      bottom: 8px;
+      right: 12px;
     }
+
   </style>
 </head>
 <body>
 <div class="reveal">
   <div class="slides">
 
-    <!-- ===================== -->
-    <!--        오프닝          -->
-    <!-- ===================== -->
-
     <!-- 슬라이드 1: 메인 표지 -->
     <section class="cover-main">
       <div class="cover-badge">🎓 교육복지 AI 활용 연수</div>
       <h1>AI, 이렇게<br>쓰면 됩니다</h1>
-      <p>교육복지사를 위한 AI 도구 활용 실습 연수</p>
+      <p class="cover-sub">교육복지사를 위한 AI 도구 활용 실습 연수</p>
       <p class="cover-date">2025. 06. 24 &nbsp;|&nbsp; 김제교육지원청</p>
     </section>
 
     <!-- 슬라이드 2: 생활 속 AI -->
     <section>
       <div class="part-badge">오프닝</div>
-      <h2>🤔 AI, 이미 쓰고 있었어요</h2>
-      <div class="two-col">
-        <div class="card blue" style="text-align:center; padding: 20px;">
+      <div class="slide-title">🤔 AI, 이미 쓰고 있었어요</div>
+      <div class="two-col seq">
+        <div class="card blue" style="text-align:center; padding:18px 14px;">
           <div style="font-size:2em; margin-bottom:8px;">📺</div>
-          <strong style="font-size:0.9em; color:var(--main);">유튜브 추천 영상</strong>
+          <strong class="t-main">유튜브 추천 영상</strong>
           <p style="margin-top:6px;">내가 본 영상을 AI가 학습해서<br>다음에 볼 영상을 추천해줘요</p>
         </div>
-        <div class="card mint" style="text-align:center; padding: 20px;">
+        <div class="card mint" style="text-align:center; padding:18px 14px;">
           <div style="font-size:2em; margin-bottom:8px;">🛍️</div>
-          <strong style="font-size:0.9em; color:var(--sub);">네이버 맞춤 광고</strong>
+          <strong class="t-mint">네이버 맞춤 광고</strong>
           <p style="margin-top:6px;">내가 검색한 키워드를 AI가 기억해서<br>관련 광고를 보여줘요</p>
         </div>
       </div>
-      <div class="hbox blue" style="margin-top:10px; text-align:center;">
-        💡 AI는 새로운 것이 아니에요. <span class="accent">이미 우리 일상 속에 있습니다.</span>
+      <div class="hbox blue seq" style="margin-top:8px; text-align:center;">
+        💡 AI는 새로운 것이 아니에요.
+        <span class="t-amber">이미 우리 일상 속에 있습니다.</span>
       </div>
     </section>
 
     <!-- 슬라이드 3: AI란 무엇인가 -->
     <section>
       <div class="part-badge">오프닝</div>
-      <h2>🤖 AI가 뭔가요?</h2>
-      <div class="card blue" style="text-align:center; padding:16px; margin-bottom:12px;">
-        <p style="font-size:0.9em;">AI는 <span class="accent">엄청나게 많은 것을 읽고 배운 조수</span>예요.<br>
+      <div class="slide-title">🤖 AI가 뭔가요?</div>
+      <div class="card blue seq" style="text-align:center; padding:14px;">
+        <p>AI는 <span class="t-amber">엄청나게 많은 것을 읽고 배운 조수</span>예요.<br>
         시키는 일은 잘 하지만, <strong>판단은 내가 해야 합니다.</strong></p>
       </div>
-      <div class="two-col">
+      <div class="two-col seq" style="margin-top:8px;">
         <div class="card mint">
-          <strong style="font-size:0.85em;">✅ AI가 잘 하는 것</strong>
+          <strong>✅ AI가 잘 하는 것</strong>
           <p style="margin-top:4px;">글 쓰기, 요약, 번역<br>아이디어 제안, 반복 작업</p>
         </div>
         <div class="card amber">
-          <strong style="font-size:0.85em;">⚠️ AI가 못 하는 것</strong>
+          <strong>⚠️ AI가 못 하는 것</strong>
           <p style="margin-top:4px;">사실 판단, 최종 결정<br>감정적 공감, 책임지기</p>
         </div>
       </div>
-      <div class="hbox amber" style="margin-top:8px;">
-        🎯 AI는 <span class="accent">도구</span>입니다. 잘 쓰는 사람이 더 많은 일을 할 수 있어요.
+      <div class="hbox amber seq">
+        🎯 AI는 <span class="t-amber">도구</span>입니다.
+        잘 쓰는 사람이 더 많은 일을 할 수 있어요.
       </div>
     </section>
 
     <!-- 슬라이드 4: AI 주의사항 -->
     <section>
-      <div class="part-badge">오프닝</div>
-      <h2>⚠️ AI 쓸 때 꼭 기억하세요</h2>
-      <div class="mindset-box" style="border-color:#FEB2B2;">
-        <div class="mindset-num" style="background:#E53E3E;">1</div>
-        <div class="mindset-text">
-          <strong>AI 결과물을 그대로 쓰지 마세요</strong>
-          <span>AI가 만든 내용은 초안입니다. 반드시 내가 검토 후 사용하세요.</span>
-        </div>
+      <div class="part-badge danger">⚠️ 주의사항</div>
+      <div class="slide-title" style="color:var(--danger); border-color:var(--danger);">
+        ⚠️ AI 쓸 때 꼭 기억하세요
       </div>
-      <div class="mindset-box" style="border-color:#FEB2B2;">
-        <div class="mindset-num" style="background:#E53E3E;">2</div>
-        <div class="mindset-text">
-          <strong>개인정보·민감정보는 절대 입력하지 마세요</strong>
-          <span>학생 이름, 주소, 가정환경 등은 AI에게 알려주면 안 됩니다.</span>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon danger">1</div>
+          <div class="list-body">
+            <strong>AI 결과물을 그대로 쓰지 마세요</strong>
+            <span>AI가 만든 내용은 초안입니다.
+            반드시 내가 검토 후 사용하세요.</span>
+          </div>
         </div>
-      </div>
-      <div class="mindset-box" style="border-color:#FEB2B2;">
-        <div class="mindset-num" style="background:#E53E3E;">3</div>
-        <div class="mindset-text">
-          <strong>AI에게 만능을 기대하지 마세요</strong>
-          <span>틀린 정보를 자신있게 말하기도 합니다. 비판적으로 보세요.</span>
+        <div class="list-item">
+          <div class="list-icon danger">2</div>
+          <div class="list-body">
+            <strong>개인정보·민감정보는 절대 입력하지 마세요</strong>
+            <span>학생 이름, 주소, 가정환경 등은
+            AI에게 알려주면 안 됩니다.</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon danger">3</div>
+          <div class="list-body">
+            <strong>AI에게 만능을 기대하지 마세요</strong>
+            <span>틀린 정보를 자신 있게 말하기도 합니다.
+            비판적으로 보세요.</span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 슬라이드 5: AI 마인드셋 -->
     <section>
-      <div class="part-badge">오프닝</div>
-      <h2>💡 이렇게 쓰면 달라집니다</h2>
-      <div class="mindset-box">
-        <div class="mindset-num">1</div>
-        <div class="mindset-text">
-          <strong>무작정 만들라 하지 말고, 대화하며 계획부터</strong>
-          <span>AI와 먼저 대화하며 방향을 잡으면 결과물이 훨씬 좋아져요.</span>
+      <div class="part-badge">💡 활용 마인드셋</div>
+      <div class="slide-title">💡 이렇게 쓰면 달라집니다</div>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon amber">1</div>
+          <div class="list-body">
+            <strong>무작정 만들라 하지 말고, 대화하며 계획부터</strong>
+            <span>AI와 먼저 대화하며 방향을 잡으면
+            결과물이 훨씬 좋아져요.</span>
+          </div>
         </div>
-      </div>
-      <div class="mindset-box">
-        <div class="mindset-num">2</div>
-        <div class="mindset-text">
-          <strong>자주 써볼수록 숙련도가 올라갑니다</strong>
-          <span>처음엔 어색해도 괜찮아요. 쓸수록 나만의 활용법이 생겨요.</span>
+        <div class="list-item">
+          <div class="list-icon amber">2</div>
+          <div class="list-body">
+            <strong>자주 써볼수록 숙련도가 올라갑니다</strong>
+            <span>처음엔 어색해도 괜찮아요.
+            쓸수록 나만의 활용법이 생겨요.</span>
+          </div>
         </div>
-      </div>
-      <div class="mindset-box">
-        <div class="mindset-num">3</div>
-        <div class="mindset-text">
-          <strong>쓸수록 연결과 범위가 넓어집니다</strong>
-          <span>도구 하나를 알면 다른 도구도 쉽게 느껴져요.</span>
+        <div class="list-item">
+          <div class="list-icon amber">3</div>
+          <div class="list-body">
+            <strong>쓸수록 연결과 범위가 넓어집니다</strong>
+            <span>도구 하나를 알면
+            다른 도구도 쉽게 느껴져요.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 슬라이드 6: 오늘 쓸 도구 한눈에 보기 -->
+    <!-- 슬라이드 6: 오늘 쓸 도구 -->
     <section>
       <div class="part-badge">오프닝</div>
-      <h2>🗂️ 오늘 함께 쓸 AI 도구들</h2>
-      <div class="tool-grid">
+      <div class="slide-title">🗂️ 오늘 함께 쓸 AI 도구들</div>
+      <div class="tool-grid seq">
         <div class="tool-card">
-          <div class="icon">🎮</div>
-          <div class="name">Quick, Draw!</div>
-          <div class="desc">AI 그림 맞추기 게임</div>
+          <div class="tc-icon">🎮</div>
+          <div class="tc-name">Quick, Draw!</div>
+          <div class="tc-desc">AI 그림 맞추기 게임</div>
         </div>
         <div class="tool-card">
-          <div class="icon">🎨</div>
-          <div class="name">AutoDraw</div>
-          <div class="desc">AI 그림 도우미</div>
+          <div class="tc-icon">🎨</div>
+          <div class="tc-name">AutoDraw</div>
+          <div class="tc-desc">AI 그림 도우미</div>
         </div>
         <div class="tool-card">
-          <div class="icon">📐</div>
-          <div class="name">킹수학</div>
-          <div class="desc">AI 수학 학습</div>
+          <div class="tc-icon">📐</div>
+          <div class="tc-name">킹수학</div>
+          <div class="tc-desc">AI 수학 학습</div>
         </div>
         <div class="tool-card">
-          <div class="icon">🎵</div>
-          <div class="name">Suno AI</div>
-          <div class="desc">AI 노래 만들기</div>
+          <div class="tc-icon">🎵</div>
+          <div class="tc-name">Suno AI</div>
+          <div class="tc-desc">AI 노래 만들기</div>
         </div>
         <div class="tool-card">
-          <div class="icon">🤖</div>
-          <div class="name">JBGPT</div>
-          <div class="desc">전북 교육 AI</div>
+          <div class="tc-icon">🤖</div>
+          <div class="tc-name">JBGPT</div>
+          <div class="tc-desc">전북 교육 AI</div>
         </div>
         <div class="tool-card">
-          <div class="icon">🖼️</div>
-          <div class="name">미리캔버스</div>
-          <div class="desc">AI 디자인 도구</div>
+          <div class="tc-icon">🖼️</div>
+          <div class="tc-name">미리캔버스</div>
+          <div class="tc-desc">AI 디자인 도구</div>
         </div>
         <div class="tool-card">
-          <div class="icon">🎙️</div>
-          <div class="name">클로바노트</div>
-          <div class="desc">AI 회의록 작성</div>
+          <div class="tc-icon">🎙️</div>
+          <div class="tc-name">클로바노트</div>
+          <div class="tc-desc">AI 회의록 작성</div>
         </div>
         <div class="tool-card">
-          <div class="icon">💬</div>
-          <div class="name">ChatGPT</div>
-          <div class="desc">AI 대화 도우미</div>
+          <div class="tc-icon">💬</div>
+          <div class="tc-name">ChatGPT</div>
+          <div class="tc-desc">AI 대화 도우미</div>
         </div>
         <div class="tool-card">
-          <div class="icon">📖</div>
-          <div class="name">NotebookLM</div>
-          <div class="desc">AI 자료 요약</div>
+          <div class="tc-icon">📖</div>
+          <div class="tc-name">NotebookLM</div>
+          <div class="tc-desc">AI 자료 요약</div>
         </div>
       </div>
     </section>
@@ -651,36 +720,38 @@
     <!-- 슬라이드 7: 사전 준비 확인 -->
     <section>
       <div class="part-badge">오프닝</div>
-      <h2>✅ 시작 전 준비 확인</h2>
-      <div class="check-item">
-        <div class="check-icon">🔵</div>
-        <div class="check-text">
-          <strong>구글 계정 로그인</strong>
-          <span>Suno AI · NotebookLM · 미리캔버스 사용에 필요해요</span>
+      <div class="slide-title">✅ 시작 전 준비 확인</div>
+      <div class="seq">
+        <div class="list-item">
+          <div class="list-icon" style="background:#4285F4;">G</div>
+          <div class="list-body">
+            <strong>구글 계정 로그인</strong>
+            <span>Suno AI · NotebookLM · 미리캔버스 사용에 필요해요</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:#03C75A;">N</div>
+          <div class="list-body">
+            <strong>네이버 계정 로그인</strong>
+            <span>클로바노트 사용에 필요해요</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:#6C8EBF;">J</div>
+          <div class="list-body">
+            <strong>JBGPT 접속 확인</strong>
+            <span>전북 교육청 AI 도구 · 교육청 계정으로 접속하세요</span>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon mint">M</div>
+          <div class="list-body">
+            <strong>미리캔버스 회원가입 완료</strong>
+            <span>miricanvas.com · 사전에 가입 완료된 상태여야 해요</span>
+          </div>
         </div>
       </div>
-      <div class="check-item">
-        <div class="check-icon">🟢</div>
-        <div class="check-text">
-          <strong>네이버 계정 로그인</strong>
-          <span>클로바노트 사용에 필요해요</span>
-        </div>
-      </div>
-      <div class="check-item">
-        <div class="check-icon">🟡</div>
-        <div class="check-text">
-          <strong>JBGPT 접속 확인</strong>
-          <span>전북 교육청 AI 도구 · 교육청 계정으로 접속하세요</span>
-        </div>
-      </div>
-      <div class="check-item">
-        <div class="check-icon">🟠</div>
-        <div class="check-text">
-          <strong>미리캔버스 회원가입 완료</strong>
-          <span>miricanvas.com · 사전에 가입 완료된 상태여야 해요</span>
-        </div>
-      </div>
-      <div class="hbox amber" style="margin-top:8px;">
+      <div class="hbox amber" style="margin-top:6px;">
         ⚠️ 아직 준비가 안 되신 분은 지금 바로 해주세요!
       </div>
     </section>
@@ -693,7 +764,7 @@
     hash: true,
     transition: 'fade',
     transitionSpeed: 'default',
-    center: true,
+    center: false,
     controls: true,
     progress: true,
     slideNumber: 'c/t',
