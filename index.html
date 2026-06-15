@@ -887,6 +887,28 @@
     progress: true,
     slideNumber: 'c/t',
   });
+    // 클릭 시 active 클래스 토글
+  document.addEventListener('click', function(e) {
+    const targets = [
+      '.list-item',
+      '.step-box',
+      '.tool-card',
+      '.card'
+    ];
+
+    targets.forEach(selector => {
+      const el = e.target.closest(selector);
+      if (el) {
+        // 같은 슬라이드 내 같은 타입 요소들의 active 해제
+        const section = el.closest('section');
+        section.querySelectorAll(selector).forEach(item => {
+          if (item !== el) item.classList.remove('active');
+        });
+        // 클릭한 요소 토글
+        el.classList.toggle('active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
