@@ -536,6 +536,125 @@
       bottom: 8px;
       right: 12px;
     }
+        /* ════════════════════════
+       19. 호버 / 클릭 강화
+    ════════════════════════ */
+
+    /* list-item 호버 강화 */
+    .list-item:hover {
+      transform: translateX(8px);
+      border-color: var(--main);
+      background: #F0F5FF;
+      box-shadow: var(--shadow);
+    }
+
+    /* list-item 클릭 유지 */
+    .list-item.active {
+      background: #E8F0FF;
+      border-color: var(--main);
+      border-left: 4px solid var(--main);
+      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
+      transform: translateX(8px);
+    }
+    .list-item.active .list-icon {
+      transform: scale(1.15);
+      box-shadow: 0 2px 8px rgba(108,142,191,0.4);
+    }
+    .list-item.active .list-body strong {
+      color: var(--main);
+    }
+
+    /* danger 계열 active */
+    .list-item.active .list-icon.danger {
+      box-shadow: 0 2px 8px rgba(229,62,62,0.4);
+    }
+    .list-item.active:has(.list-icon.danger) {
+      background: #FFF5F5;
+      border-color: var(--danger);
+      border-left: 4px solid var(--danger);
+      box-shadow: 0 4px 20px rgba(229,62,62,0.2);
+    }
+    .list-item.active:has(.list-icon.danger) .list-body strong {
+      color: var(--danger);
+    }
+
+    /* amber 계열 active */
+    .list-item.active:has(.list-icon.amber) {
+      background: #FFF8E8;
+      border-color: var(--accent);
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 4px 20px rgba(240,165,0,0.2);
+    }
+    .list-item.active:has(.list-icon.amber) .list-body strong {
+      color: var(--accent);
+    }
+
+    /* step-box 클릭 유지 */
+    .step-box.active {
+      background: #E8F0FF;
+      border-color: var(--main);
+      border-left: 4px solid var(--main);
+      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
+      transform: translateX(8px);
+    }
+    .step-box.active .step-num {
+      transform: scale(1.15);
+      box-shadow: 0 2px 8px rgba(108,142,191,0.4);
+    }
+    .step-box.active .step-content strong {
+      color: var(--main);
+    }
+
+    /* mint step active */
+    .step-box.active:has(.step-num.mint) {
+      background: #E6F7F7;
+      border-color: var(--sub);
+      border-left: 4px solid var(--sub);
+    }
+    .step-box.active:has(.step-num.mint) .step-content strong {
+      color: var(--sub);
+    }
+
+    /* amber step active */
+    .step-box.active:has(.step-num.amber) {
+      background: #FFF8E8;
+      border-color: var(--accent);
+      border-left: 4px solid var(--accent);
+    }
+    .step-box.active:has(.step-num.amber) .step-content strong {
+      color: var(--accent);
+    }
+
+    /* tool-card 클릭 유지 */
+    .tool-card.active {
+      background: #E8F0FF;
+      border-color: var(--main);
+      border: 2px solid var(--main);
+      box-shadow: 0 4px 20px rgba(108,142,191,0.3);
+      transform: translateY(-5px);
+    }
+    .tool-card.active .tc-name {
+      color: var(--main);
+    }
+    .tool-card.active .tc-icon {
+      transform: scale(1.2);
+      display: inline-block;
+    }
+
+    /* card 클릭 유지 */
+    .card.active {
+      background: #F0F5FF;
+      border-color: var(--main);
+      box-shadow: 0 4px 20px rgba(108,142,191,0.25);
+      transform: translateY(-4px);
+    }
+
+    /* 전환 통일 */
+    .list-icon,
+    .step-num,
+    .tc-icon {
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
 
   </style>
 </head>
