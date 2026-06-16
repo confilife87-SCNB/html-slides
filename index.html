@@ -2580,7 +2580,6 @@
       el.classList.remove('toc-active');
     });
     const items = document.querySelectorAll('.toc-item');
-    // onclick에서 goSlide(n) 숫자 파싱
     items.forEach(el => {
       const match = el.getAttribute('onclick').match(/goSlide$(\d+)$/);
       if (match && parseInt(match[1]) === current) {
