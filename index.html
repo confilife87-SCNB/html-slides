@@ -549,6 +549,32 @@
       color: var(--text-light);
       font-size: 0.68em;
     }
+
+    /* ── 이미지 캡션 ── */
+    .img-wrap {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      gap: 5px;
+    }
+    .img-caption {
+      font-size: 0.68em;
+      color: var(--text-light);
+      text-align: center;
+      padding: 3px 6px;
+      background: #F0F4FF;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid var(--border);
+      border-top: none;
+      word-break: keep-all;
+      flex-shrink: 0;
+    }
+    .img-wrap .img-box {
+      flex: 1;
+      min-height: 0;
+      border-radius: 8px 8px 0 0;
+    }
   </style>
 </head>
 <body>
@@ -843,8 +869,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/quickdraw_main.png" alt="Quick, Draw! 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/quickdraw_main.png" alt="Quick, Draw! 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ Quick, Draw! 메인 화면</div>
           </div>
         </div>
       </div>
@@ -892,8 +921,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/quickdraw_play.png" alt="Quick, Draw! 실습 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/quickdraw_play.png" alt="Quick, Draw! 실습 화면">
+            </div>
+            <div class="img-caption">🖼️ Quick, Draw! 실습 화면</div>
           </div>
         </div>
       </div>
@@ -980,8 +1012,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/autodraw_main.png" alt="AutoDraw 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/autodraw_main.png" alt="AutoDraw 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ AutoDraw 메인 화면</div>
           </div>
         </div>
       </div>
@@ -1029,8 +1064,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/autodraw_play.png" alt="AutoDraw 실습 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/autodraw_play.png" alt="AutoDraw 실습 화면">
+            </div>
+            <div class="img-caption">🖼️ AutoDraw 실습 화면</div>
           </div>
         </div>
       </div>
@@ -1117,8 +1155,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/kingsmath_main.png" alt="킹수학 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/kingsmath_main.png" alt="킹수학 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ 킹수학 메인 화면</div>
           </div>
         </div>
       </div>
@@ -1161,8 +1202,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/kingsmath_category.png" alt="킹수학 분류 선택 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/kingsmath_category.png" alt="킹수학 분류 선택 화면">
+            </div>
+            <div class="img-caption">🖼️ 킹수학 분류 선택 화면</div>
           </div>
         </div>
       </div>
@@ -1254,8 +1298,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/suno_main.png" alt="Suno AI 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/suno_main.png" alt="Suno AI 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ Suno AI 메인 화면</div>
           </div>
         </div>
       </div>
@@ -1298,8 +1345,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/jbgpt_prompt.png" alt="JBGPT 프롬프트 입력 + 결과 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/jbgpt_prompt.png" alt="JBGPT 프롬프트 입력 + 결과 화면">
+            </div>
+            <div class="img-caption">🖼️ JBGPT 프롬프트 입력 + 결과 화면</div>
           </div>
         </div>
       </div>
@@ -1339,8 +1389,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/suno_login.png" alt="Suno AI 로그인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/suno_login.png" alt="Suno AI 로그인 화면">
+            </div>
+            <div class="img-caption">🖼️ Suno AI 접속 + 로그인 화면</div>
           </div>
         </div>
       </div>
@@ -1380,8 +1433,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/suno_input.png" alt="JBGPT 결과물 붙여넣기 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/suno_input.png" alt="JBGPT 결과물 붙여넣기 화면">
+            </div>
+            <div class="img-caption">🖼️ Song Description 붙여넣기 화면</div>
           </div>
         </div>
       </div>
@@ -1418,8 +1474,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/suno_result.png" alt="Suno AI 노래 생성 완료 + 재생 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/suno_result.png" alt="Suno AI 노래 생성 완료 화면">
+            </div>
+            <div class="img-caption">🖼️ Suno AI 노래 생성 완료 + 재생 화면</div>
           </div>
         </div>
       </div>
@@ -1572,8 +1631,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/jbgpt_main.png" alt="JBGPT 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/jbgpt_main.png" alt="JBGPT 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ JBGPT 메인 화면</div>
           </div>
         </div>
       </div>
@@ -1651,8 +1713,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/jbgpt_result.png" alt="JBGPT 안내문 결과 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/jbgpt_result.png" alt="JBGPT 안내문 결과 화면">
+            </div>
+            <div class="img-caption">🖼️ JBGPT 안내문 초안 결과 화면</div>
           </div>
         </div>
       </div>
@@ -1697,8 +1762,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/miri_main.png" alt="미리캔버스 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/miri_main.png" alt="미리캔버스 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ 미리캔버스 메인 화면</div>
           </div>
         </div>
       </div>
@@ -1746,8 +1814,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/miri_template.png" alt="미리캔버스 템플릿 선택 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/miri_template.png" alt="미리캔버스 템플릿 선택 화면">
+            </div>
+            <div class="img-caption">🖼️ 미리캔버스 템플릿 선택 화면</div>
           </div>
         </div>
       </div>
@@ -1811,8 +1882,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/miri_ai.png" alt="미리캔버스 AI 도구 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/miri_ai.png" alt="미리캔버스 AI 도구 화면">
+            </div>
+            <div class="img-caption">🖼️ 미리캔버스 AI 도구 화면</div>
           </div>
         </div>
       </div>
@@ -1851,8 +1925,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/miri_result.png" alt="완성된 안내문 + 다운로드 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/miri_result.png" alt="완성된 안내문 화면">
+            </div>
+            <div class="img-caption">🖼️ 완성된 안내문 + 다운로드 화면</div>
           </div>
         </div>
       </div>
@@ -1937,8 +2014,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/clova_main.png" alt="클로바노트 메인 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/clova_main.png" alt="클로바노트 메인 화면">
+            </div>
+            <div class="img-caption">🖼️ 클로바노트 메인 화면</div>
           </div>
         </div>
       </div>
@@ -2010,8 +2090,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/clova_record.png" alt="클로바노트 녹음 + 텍스트 변환 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/clova_record.png" alt="클로바노트 녹음 + 텍스트 변환 화면">
+            </div>
+            <div class="img-caption">🖼️ 클로바노트 실시간 텍스트 변환 화면</div>
           </div>
         </div>
       </div>
@@ -2055,8 +2138,11 @@
           </div>
         </div>
         <div class="practice-right">
-          <div class="img-box">
-            <img src="images/jbgpt_minutes.png" alt="JBGPT 회의록 정리 결과 화면">
+          <div class="img-wrap">
+            <div class="img-box">
+              <img src="images/jbgpt_minutes.png" alt="JBGPT 회의록 정리 결과 화면">
+            </div>
+            <div class="img-caption">🖼️ JBGPT 회의록 정리 결과 화면</div>
           </div>
         </div>
       </div>
