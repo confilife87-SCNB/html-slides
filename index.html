@@ -2195,7 +2195,11 @@
      목차 버튼 + 우측 반투명 패널
      .reveal 바깥 → 슬라이드에 간섭 없음
 ════════════════════════════════════ -->
-
+<!-- 인쇄 버튼 -->
+<button id="print-btn" onclick="printSlides()">
+  🖨️ 인쇄
+</button>
+  
 <!-- 목차 열기 버튼 (우측 하단 고정) -->
 <button id="toc-btn" onclick="toggleToc()">
   ☰ 목차
@@ -2300,6 +2304,79 @@
   #toc-btn:hover {
     background: rgba(74, 111, 165, 0.95);
     transform: translateY(-2px);
+  }
+    /* ── 인쇄 버튼 ── */
+  #print-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 108px;
+    z-index: 9000;
+    background: rgba(108, 142, 191, 0.88);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 0.88em;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(108,142,191,0.35);
+    transition: background 0.2s ease, transform 0.2s ease;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  }
+  #print-btn:hover {
+    background: rgba(74, 111, 165, 0.95);
+    transform: translateY(-2px);
+  }
+
+  /* ── 인쇄 전용 CSS ── */
+  @media print {
+    /* 불필요한 UI 숨김 */
+    #toc-btn,
+    #print-btn,
+    #toc-panel,
+    #toc-overlay,
+    .reveal .controls,
+    .reveal .progress,
+    .reveal .slide-number {
+      display: none !important;
+    }
+
+    /* 페이지 여백 제거 */
+    @page {
+      size: 1280px 720px landscape;
+      margin: 0;
+    }
+
+    html, body {
+      width: 1280px;
+      height: 720px;
+      margin: 0;
+      padding: 0;
+      background: #F8F9FF;
+    }
+
+    /* 슬라이드 1장씩 페이지 나누기 */
+    .reveal .slides section {
+      display: flex !important;
+      page-break-after: always;
+      break-after: page;
+      width: 1280px !important;
+      height: 720px !important;
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      overflow: hidden;
+    }
+
+    /* 중첩 section (수평 슬라이드) 처리 */
+    .reveal .slides > section > section {
+      page-break-after: always;
+      break-after: page;
+    }
   }
 
   /* ── 오버레이 ── */
@@ -2478,6 +2555,16 @@
   function closeToc() {
     document.getElementById('toc-panel').classList.remove('active');
     document.getElementById('toc-overlay').classList.remove('active');
+  }
+
+    // ── 인쇄 (PDF 저장) ──
+  function printSlides() {
+    // 목차 패널 닫기
+    closeToc();
+    // 잠깐 대기 후 인쇄 (패널 닫힘 애니메이션 완료 후)
+    setTimeout(() => {
+      window.print();
+    }, 350);
   }
 
   // ── 슬라이드 이동 ──
